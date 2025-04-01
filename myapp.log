@@ -1,0 +1,39 @@
+2025-04-01 06:27:26.430  INFO 373523 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-25-44 with PID 373523 (/home/ubuntu/lms/lms/lms/target/classes started by ubuntu in /home/ubuntu/lms/lms/lms)
+2025-04-01 06:27:26.442  INFO 373523 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-04-01 06:27:31.393  INFO 373523 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01 06:27:31.393  INFO 373523 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-04-01 06:27:31.411  INFO 373523 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-04-01 06:27:31.579  INFO 373523 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01 06:27:32.033  INFO 373523 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01 06:27:32.600  INFO 373523 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01 06:27:39.196  INFO 373523 --- [restartedMain] com.geneza.lms.Application               : Started Application in 13.659 seconds (JVM running for 14.518)
+2025-04-01 06:33:45.549  INFO 373523 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2025-04-01 06:33:48.793  INFO 373523 --- [http-nio-8080-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1669 ms
+2025-04-01 06:34:08.751  INFO 373523 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01 06:34:08.769  INFO 373523 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-01 07:01:07.306  INFO 393476 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-25-44 with PID 393476 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms)
+2025-04-01 07:01:07.313  INFO 393476 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-04-01 07:01:13.095  INFO 393476 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01 07:01:13.096  INFO 393476 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-04-01 07:01:13.111  INFO 393476 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-04-01 07:01:13.266  INFO 393476 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01 07:01:13.729  INFO 393476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01 07:01:14.352  INFO 393476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01 07:01:23.619  INFO 393476 --- [restartedMain] com.geneza.lms.Application               : Started Application in 17.492 seconds (JVM running for 18.464)
+2025-04-01 07:01:59.059  INFO 393476 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2025-04-01 07:02:02.433  INFO 393476 --- [http-nio-8080-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2326 ms
+2025-04-01 07:02:30.979  INFO 393476 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01 07:02:31.028  INFO 393476 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-01 07:09:11.785  INFO 398136 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-25-44 with PID 398136 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms)
+2025-04-01 07:09:11.791  INFO 398136 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-04-01 07:09:17.278  INFO 398136 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-01 07:09:17.281  INFO 398136 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-04-01 07:09:17.305  INFO 398136 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-04-01 07:09:17.474  INFO 398136 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-01 07:09:18.289  INFO 398136 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-01 07:09:18.758  INFO 398136 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-01 07:09:25.678  INFO 398136 --- [restartedMain] com.geneza.lms.Application               : Started Application in 15.043 seconds (JVM running for 15.877)
+2025-04-01 07:09:40.288  INFO 398136 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2025-04-01 07:09:43.379  INFO 398136 --- [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2170 ms
+2025-04-01 07:09:49.475  INFO 398136 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-01 07:09:49.543  INFO 398136 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
