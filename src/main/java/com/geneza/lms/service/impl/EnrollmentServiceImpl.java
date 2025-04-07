@@ -4,6 +4,8 @@ import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.service.EnrollmentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,10 +52,21 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         }else {
             return false;
         }
-    }@Transactional
-    public List<Enrollment> findAllByBatchId(Integer  batchId) {
-        return new java.util.ArrayList<Enrollment>(enrollmentRepository.findAllByBatchId(batchId));
-    }@Transactional
+    }
+    // @Transactional
+    // public List<Enrollment> findAllByBatchId(Integer  batchId) {
+    //     return new java.util.ArrayList<Enrollment>(enrollmentRepository.findAllByBatchId(batchId));
+    // }
+
+    @Transactional
+    public Page<Enrollment> findAllByBatchId(Integer batchId, Pageable pageable) {
+    return enrollmentRepository.findByBatchId(batchId, pageable);
+    }
+
+    
+    
+    
+    @Transactional
     public List<Enrollment> findAllByStudentId(Integer  studentId) {
         return new java.util.ArrayList<Enrollment>(enrollmentRepository.findAllByStudentId(studentId));
     }

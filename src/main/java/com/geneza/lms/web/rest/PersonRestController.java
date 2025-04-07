@@ -91,13 +91,31 @@ public class PersonRestController {
         return personService.getPersonsByFilters(country, state, region);
     }
 
-@RequestMapping(value = "Person/Filter/Page", method =RequestMethod.GET)
+    @RequestMapping(value = "Person/Filter/Page", method = RequestMethod.GET)
     @ResponseBody
-    public Page<Person> getFilteredPersonsPaged(@RequestParam(required = false) String country,
-                                           @RequestParam(required = false) String state,
-                                           @RequestParam(required = false) String region,
-                                           Pageable pageable) {
-    return personService.getPersonsByFiltersPagination(country, state, region, pageable);
+    public Page<Person> getFilteredPersonsPaged(
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String state,
+            @RequestParam(required = false) String region,
+            @RequestParam(required = false) String search,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+    
+        Pageable pageable = PageRequest.of(page, size);
+        return personService.getPersonsByFiltersPagination(country, state, region, search, pageable);
+    }
+
+    @RequestMapping(value = "Person/Search", method = RequestMethod.GET)
+@ResponseBody
+public Page<Person> searchPersons(
+        @RequestParam(required = false) String search,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size) {
+
+    Pageable pageable = PageRequest.of(page, size);
+    return personService.searchPersons(search, pageable);
 }
+
+    
 
 }

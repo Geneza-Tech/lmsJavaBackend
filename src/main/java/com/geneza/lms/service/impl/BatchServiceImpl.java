@@ -37,6 +37,7 @@ public class BatchServiceImpl implements BatchService {
         existingBatch.setId(batch.getId());
                 existingBatch.setBatch(batch.getBatch());
                 existingBatch.setStartDate(batch.getStartDate());
+                existingBatch.setEndDate(batch.getEndDate());
                 existingBatch.setCourse(batch.getCourse());
                 existingBatch.setCountry(batch.getCountry());
                 existingBatch.setLocation(batch.getLocation());

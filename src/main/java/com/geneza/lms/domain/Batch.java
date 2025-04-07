@@ -4,7 +4,6 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
 import javax.xml.bind.annotation.*;
@@ -36,7 +35,12 @@ public class Batch implements Serializable {
     private String batch;@Column(name = "startDate")
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
-    private Date startDate;@Column(name = "location")
+    private Date startDate;
+    @Column(name = "endDate")
+    @Basic(fetch = FetchType.EAGER)
+    @XmlElement
+    private Date endDate;
+    @Column(name = "location")
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
     private String location;
@@ -72,6 +76,14 @@ public class Batch implements Serializable {
     
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+    
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
     
     public Course getCourse() {

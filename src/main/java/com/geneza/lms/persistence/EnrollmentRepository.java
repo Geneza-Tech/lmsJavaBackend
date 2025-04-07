@@ -14,5 +14,6 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     public List<Enrollment> findAllByBatchId(Integer batchId);
     public List<Enrollment> findAllByStudentId(Integer studentId);  
    Page<Enrollment> findAll(Pageable pageable);
+   Page<Enrollment> findByBatchId(Integer batchId, Pageable pageable);
 
 }

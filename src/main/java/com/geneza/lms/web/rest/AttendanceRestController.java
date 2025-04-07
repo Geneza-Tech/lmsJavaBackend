@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -95,5 +96,12 @@ public class AttendanceRestController {
     public List<Attendance> getAllByEnrollmentId(@PathVariable("enrollment_id") Integer enrollmentId) {
         return new java.util.ArrayList<Attendance>(attendanceService.findAllByEnrollmentId(enrollmentId));
     }
+
+    @RequestMapping(value = "/Attendance/Batch/{batch_id}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Attendance> getAllByBatchId(@PathVariable("batch_id") Integer batchId) {
+    return attendanceService.findAllByBatchId(batchId);
+}
+
 
 }

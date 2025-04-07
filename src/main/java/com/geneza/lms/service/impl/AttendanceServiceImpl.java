@@ -59,6 +59,10 @@ public class AttendanceServiceImpl implements AttendanceService {
         return new java.util.ArrayList<Attendance>(attendanceRepository.findAllByEnrollmentId(enrollmentId));
     }
 
-    
+    @Override
+public List<Attendance> findAllByBatchId(Integer batchId) {
+    return attendanceRepository.findByEnrollment_Batch_Id(batchId);
+}
+
 
 }
