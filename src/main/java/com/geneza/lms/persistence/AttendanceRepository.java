@@ -14,5 +14,6 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
     public List<Attendance> findAllByModuleId(Integer moduleId);
     public List<Attendance> findAllByEnrollmentId(Integer enrollmentId);  
    Page<Attendance> findAll(Pageable pageable);
+   List<Attendance> findByEnrollment_Batch_Id(Integer batchId);
 
 }

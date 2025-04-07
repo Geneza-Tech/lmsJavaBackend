@@ -10,5 +10,7 @@ public interface PersonService {
     public boolean deletePerson(Integer personId);
     public List<Person> findAll();
     List<Person> getPersonsByFilters(String country, String state, String region);
-    Page<Person> getPersonsByFiltersPagination(String country, String state, String region, Pageable pageable);
+    Page<Person> getPersonsByFiltersPagination(String country, String state, String region,String search,  Pageable pageable);
+    Page<Person> searchPersons(String search, Pageable pageable);
+
 }

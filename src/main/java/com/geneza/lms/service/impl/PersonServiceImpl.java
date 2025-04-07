@@ -62,10 +62,14 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Transactional
-    public Page<Person> getPersonsByFiltersPagination(String country, String state, String region, Pageable pageable) {
-    return personRepository.findByFilters(country, state, region, pageable);
-}
-
+    public Page<Person> getPersonsByFiltersPagination(String country, String state, String region, String search, Pageable pageable) {
+        return personRepository.findByFilters(country, state, region, search, pageable);
+    }
+    
+    @Transactional
+    public Page<Person> searchPersons(String search, Pageable pageable) {
+        return personRepository.findBySearch(search, pageable);
+    }
     
 
 }

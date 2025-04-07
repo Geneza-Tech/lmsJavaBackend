@@ -4,7 +4,6 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
 import javax.xml.bind.annotation.*;
@@ -17,7 +16,10 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "enrollment")
+@Table(name = "enrollment",
+uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"student","batch"})
+    })
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace = "GenezaRest/com/geneza/lms/domain", name = "enrollment")
 public class Enrollment implements Serializable {

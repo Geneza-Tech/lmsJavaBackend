@@ -9,4 +9,6 @@ public interface AttendanceService {
     public List<Attendance> findAll();
     public List<Attendance> findAllByModuleId(Integer  module);
     public List<Attendance> findAllByEnrollmentId(Integer  enrollment);
+    List<Attendance> findAllByBatchId(Integer batchId);
+
 }

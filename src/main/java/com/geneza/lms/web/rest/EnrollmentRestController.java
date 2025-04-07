@@ -5,8 +5,10 @@ import com.geneza.lms.service.EnrollmentService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 
 
 @Controller("EnrollmentRestController")
@@ -37,11 +43,24 @@ public class EnrollmentRestController {
     }
 
     @RequestMapping(value = "/Enrollment", method = RequestMethod.POST)
-    @ResponseBody
-    public Enrollment newEnrollment(@RequestBody Enrollment enrollment) {
-    enrollmentService.saveEnrollment(enrollment);
-        return enrollmentRepository.findById(enrollment.getId());
+@ResponseBody
+public ResponseEntity<?> newEnrollment(@RequestBody Enrollment enrollment) {
+    try {
+        enrollmentService.saveEnrollment(enrollment);
+        return ResponseEntity.ok(enrollmentRepository.findById(enrollment.getId()));
+    } catch (DataIntegrityViolationException ex) {
+        Throwable cause = ex.getCause();
+        if (cause instanceof org.hibernate.exception.ConstraintViolationException) {
+            return ResponseEntity.badRequest().body("Student is already enrolled in this batch.");
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Unexpected database error occurred.");
+    } catch (Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Unexpected error: " + ex.getMessage());
     }
+}
+
 
     @RequestMapping(value = "/Enrollment", method = RequestMethod.GET)
     @ResponseBody
@@ -84,11 +103,21 @@ public class EnrollmentRestController {
     }
 
 
-    @RequestMapping(value = "/Enrollment/Batch/{batch_id}", method = RequestMethod.GET)
+    @GetMapping("/Enrollment/Batch/{batch_id}/Page/{page}/Sort/{sortField}/Direction/{direction}")
     @ResponseBody
-    public List<Enrollment> getAllByBatchId(@PathVariable("batch_id") Integer batchId) {
-        return new java.util.ArrayList<Enrollment>(enrollmentService.findAllByBatchId(batchId));
-    }
+    public Page<Enrollment> getAllByBatchId(@PathVariable("batch_id") Integer batchId,
+                                        @PathVariable("page") Integer page, @PathVariable String sortField, @PathVariable int direction) {
+                                            Sort sort;
+                                            if(direction ==1)
+			sort = Sort.by(sortField).descending();
+		else
+			sort = Sort.by(sortField).ascending();
+
+    Pageable pageable = PageRequest.of(page, 10,sort);
+
+    return enrollmentService.findAllByBatchId(batchId, pageable);
+}
+
 
     @RequestMapping(value = "/Enrollment/Student/{student_id}", method = RequestMethod.GET)
     @ResponseBody
