@@ -15,7 +15,8 @@ public interface BatchRepository extends JpaRepository<Batch, Long>, JpaSpecific
     public List<Batch> findAllByCourseId(Integer courseId);
     public List<Batch> findAllByCountryId(Integer countryId);
     public List<Batch> findAllByBatchStatusId(Integer batchStatusId);
-    List<Batch> findAllByCourseIdAndCountryIdAndBatchStatusId(Integer courseId, Integer countryId, Integer batchStatusId);  
+    List<Batch> findAllByCourseIdAndCountryIdAndBatchStatusId(Integer courseId, Integer countryId, Integer batchStatusId);
+    // Page<Batch> findAllByCcbsPage(Integer courseId, Integer countryId, Integer batchStatusId,Pageable pageable);  
    Page<Batch> findAll(Pageable pageable);
 
 }

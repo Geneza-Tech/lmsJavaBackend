@@ -2,6 +2,9 @@ package com.geneza.lms.service.impl;
 import com.geneza.lms.persistence.BatchRepository;
 import com.geneza.lms.domain.Batch;
 import com.geneza.lms.service.BatchService;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
@@ -89,6 +92,29 @@ public List<Batch> getBatchesByFilters(Integer courseId, Integer countryId, Inte
 
     return batchRepository.findAll(specification); // Now works correctly!
 }
+
+@Override
+public Page<Batch> getBatchesByFilterPage(Integer courseId, Integer countryId, Integer batchStatusId, Pageable pageable) {
+    Specification<Batch> specification = (root, query, criteriaBuilder) -> {
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (courseId != null) {
+            predicates.add(criteriaBuilder.equal(root.get("course").get("id"), courseId));
+        }
+        if (countryId != null) {
+            predicates.add(criteriaBuilder.equal(root.get("country").get("id"), countryId));
+        }
+        if (batchStatusId != null) {
+            predicates.add(criteriaBuilder.equal(root.get("batchStatus").get("id"), batchStatusId));
+        }
+
+        return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+    };
+
+    return batchRepository.findAll(specification, pageable);
+}
+
+
 
 
 }

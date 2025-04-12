@@ -24,7 +24,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
 
                                @Query("SELECT p FROM Person p WHERE " +
-                               "(:country IS NULL OR p.country = :country) AND " +
+                               "(:countryId IS NULL OR p.countryId.id = :countryId) AND " +
                                "(:state IS NULL OR p.state = :state) AND " +
                                "(:region IS NULL OR p.region = :region) AND " +
                                "(:search IS NULL OR " +
@@ -34,7 +34,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
                                                    "LOWER(p.country) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
                                                    "LOWER(p.state) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
                                                    "LOWER(p.region) LIKE LOWER(CONCAT('%', :search, '%')))")
-                        Page<Person> findByFilters(@Param("country") String country,
+                        Page<Person> findByFilters(@Param("countryId") Integer countryId,
                                                    @Param("state") String state,
                                                    @Param("region") String region,
                                                    @Param("search") String search,

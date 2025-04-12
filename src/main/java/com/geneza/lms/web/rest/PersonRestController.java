@@ -94,7 +94,7 @@ public class PersonRestController {
     @RequestMapping(value = "Person/Filter/Page", method = RequestMethod.GET)
     @ResponseBody
     public Page<Person> getFilteredPersonsPaged(
-            @RequestParam(required = false) String country,
+            @RequestParam(required = false) Integer countryId,
             @RequestParam(required = false) String state,
             @RequestParam(required = false) String region,
             @RequestParam(required = false) String search,
@@ -102,7 +102,7 @@ public class PersonRestController {
             @RequestParam(defaultValue = "10") int size) {
     
         Pageable pageable = PageRequest.of(page, size);
-        return personService.getPersonsByFiltersPagination(country, state, region, search, pageable);
+        return personService.getPersonsByFiltersPagination(countryId, state, region, search, pageable);
     }
 
     @RequestMapping(value = "Person/Search", method = RequestMethod.GET)

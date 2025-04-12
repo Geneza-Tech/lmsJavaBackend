@@ -98,6 +98,12 @@ public class Person implements Serializable {
     @XmlElement
     private String spouseName;
 
+    @ManyToOne
+    @JoinColumn(name = "country_id", referencedColumnName = "id")
+    @XmlTransient
+    private Country countryId;
+
+
     // Getters and Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }

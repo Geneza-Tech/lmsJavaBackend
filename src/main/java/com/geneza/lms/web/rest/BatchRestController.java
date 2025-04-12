@@ -112,5 +112,19 @@ public class BatchRestController {
         return batchService.getBatchesByFilters(courseId, countryId, batchStatusId);
     }
 
+    @RequestMapping(value = "/Batch/Filter/page", method = RequestMethod.GET)
+@ResponseBody
+public Page<Batch> getAllByFilters(
+        @RequestParam(value = "courseId", required = false) Integer courseId,
+        @RequestParam(value = "countryId", required = false) Integer countryId,
+        @RequestParam(value = "batchStatusId", required = false) Integer batchStatusId,
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "size", defaultValue = "10") int size) {
+
+    Pageable pageable = PageRequest.of(page, size);
+    return batchService.getBatchesByFilterPage(courseId, countryId, batchStatusId, pageable);
+}
+
+
 
 }
