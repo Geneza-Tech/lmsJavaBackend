@@ -1,5 +1,6 @@
 package com.geneza.lms.service.impl;
 import com.geneza.lms.persistence.EnrollmentRepository;
+import com.geneza.lms.domain.Batch;
 import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.service.EnrollmentService;
 import java.util.List;
@@ -71,6 +72,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         return new java.util.ArrayList<Enrollment>(enrollmentRepository.findAllByStudentId(studentId));
     }
 
-    
+    @Override
+    public List<Batch> findBatchesByStudentId(Integer studentId) {
+        return enrollmentRepository.findBatchesByStudentId(studentId);
+    }
 
 }

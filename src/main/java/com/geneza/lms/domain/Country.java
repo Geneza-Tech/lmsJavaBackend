@@ -4,7 +4,6 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
 import javax.xml.bind.annotation.*;
@@ -87,5 +86,10 @@ public class Country implements Serializable {
             return false;
         return true;
     }
+
+    public String getName() {
+    return this.country;
+}
+
 
 }

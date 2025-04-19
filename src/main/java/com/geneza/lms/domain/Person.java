@@ -21,11 +21,11 @@ public class Person implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     @XmlElement
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     @XmlElement
     private String lastName;
 

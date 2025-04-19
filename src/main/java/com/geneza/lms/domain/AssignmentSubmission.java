@@ -4,7 +4,6 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
 import javax.xml.bind.annotation.*;
@@ -29,11 +28,18 @@ public class AssignmentSubmission implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlElement
-    private Integer id;  
+    private Integer id;
+    
     @Column(name = "content")
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
     private String submissionContent;
+
+    @Column(name = "comment")
+    @Basic(fetch = FetchType.EAGER)
+    @XmlElement
+    private String comment;
+
     @ManyToOne
     @JoinColumn(name="assignment")
     private Assignment assignment;@ManyToOne
@@ -41,6 +47,11 @@ public class AssignmentSubmission implements Serializable {
     private Enrollment enrollment;@ManyToOne
     @JoinColumn(name="submissionStatus")
     private SubmissionStatus submissionStatus;
+
+    @Column(name = "file_url")
+    @Basic(fetch = FetchType.EAGER)
+    @XmlElement
+    private String fileUrl;
 
 
     public void setId(Integer id) {
@@ -75,6 +86,14 @@ public class AssignmentSubmission implements Serializable {
     public void setSubmissionContent(String submissionContent) {
         this.submissionContent = submissionContent;
     }
+
+    public String getComment() {
+        return comment;
+    }
+    
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
     
     public SubmissionStatus getSubmissionStatus() {
         return submissionStatus;
@@ -87,6 +106,15 @@ public class AssignmentSubmission implements Serializable {
 
     public AssignmentSubmission() {
     }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+    
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+    
 
 
     public String toString() {

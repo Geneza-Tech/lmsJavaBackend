@@ -4,7 +4,6 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
 import javax.xml.bind.annotation.*;
@@ -86,6 +85,11 @@ public class BatchStatus implements Serializable {
         if (id != null && !id.equals(equalCheck.id))
             return false;
         return true;
+    }
+
+    public String getName() {
+        // TODO Auto-generated method stub
+        return this.batchStatus;
     }
 
 }

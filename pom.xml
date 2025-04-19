@@ -37,6 +37,16 @@
         		<scope>runtime</scope>
     		</dependency>
 
+			<!-- AWS SDK v1 - S3 (compatible with Java 8) -->
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.12.710</version> <!-- Latest as of now -->
+</dependency>
+
+
+
+
 			<!-- Jakarta Persistence API (for CriteriaBuilder) -->
     <dependency>
         <groupId>jakarta.persistence</groupId>

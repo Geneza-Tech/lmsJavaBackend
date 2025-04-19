@@ -1,4 +1,5 @@
 package com.geneza.lms.service;
+import com.geneza.lms.domain.Batch;
 import com.geneza.lms.domain.Enrollment;
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface EnrollmentService {
     // public List<Enrollment> findAllByBatchId(Integer  batch);
     Page<Enrollment> findAllByBatchId(Integer batchId, Pageable pageable);
     public List<Enrollment> findAllByStudentId(Integer  student);
+    List<Batch> findBatchesByStudentId(Integer studentId);
 }

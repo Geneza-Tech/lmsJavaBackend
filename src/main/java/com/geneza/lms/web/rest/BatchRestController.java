@@ -1,8 +1,13 @@
 package com.geneza.lms.web.rest; 
 import com.geneza.lms.domain.Batch;
+import com.geneza.lms.dto.BatchDTO;
 import com.geneza.lms.persistence.BatchRepository;
 import com.geneza.lms.service.BatchService;
+import com.geneza.lms.service.EnrollmentService;
+
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.ResponseEntity;
 
 
 @Controller("BatchRestController")
@@ -26,6 +32,10 @@ public class BatchRestController {
 
     @Autowired
     private BatchRepository batchRepository;
+
+    @Autowired
+private EnrollmentService enrollmentService;
+
 
     @Autowired
     private BatchService batchService;
@@ -125,6 +135,17 @@ public Page<Batch> getAllByFilters(
     return batchService.getBatchesByFilterPage(courseId, countryId, batchStatusId, pageable);
 }
 
+@RequestMapping(value = "/Batch/personId/{studentId}", method = RequestMethod.GET)
+@ResponseBody
+public ResponseEntity<List<BatchDTO>> getBatchesByStudentId(@PathVariable Integer studentId) {
+        List<Batch> batches = enrollmentService.findBatchesByStudentId(studentId);
+
+        List<BatchDTO> batchDTOs = batches.stream()
+                .map(BatchDTO::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(batchDTOs);
+    }
 
 
 }

@@ -8,7 +8,9 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/BatchStatusService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/BatchStatusRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/AssignmentSubmissionServiceImpl.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/CompetencyCriterionRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/security/ServerConfiguration.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/CompetencyCriterionService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/SubmissionStatus.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/AttendanceRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/RoleRepository.java
@@ -17,8 +19,11 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/BatchRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Attendance.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/BatchService.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/S3FileStorageServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/UserService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Course.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/dto/BatchDTO.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/CompetencyCategoryRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/RoleServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Country.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/AttendanceRepository.java
@@ -28,15 +33,20 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/AssignmentService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/ModuleRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Assignment.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/CompetencyCriterion.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/AssignmentSubmission.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/RoleService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Role.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/CourseRestController.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/CompetencyCriterionServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/User.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/BatchStatusServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/utilities/PaymentService.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/CompetencyCategoryServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/ImageRepository.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/CompetencyCategoryService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/security/WebSecurityConfiguration.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/CompetencyCriterionRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/BatchRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/ModuleRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/AttendanceService.java
@@ -46,6 +56,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/security/CustomUserDetailsService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/UserServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/EnrollmentRepository.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/CompetencyCategory.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/CountryRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/AssignmentSubmissionService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Module.java
@@ -54,6 +65,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/AssignmentRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/ImageService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/CountryServiceImpl.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/CompetencyCategoryRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/ModuleServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/UserRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/persistence/PersonRepository.java
@@ -73,6 +85,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/impl/ImageServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/CountryService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/Application.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/service/FileStorageService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/domain/Image.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/SubmissionStatusRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lms/src/main/java/com/geneza/lms/web/rest/EnrollmentRestController.java

@@ -10,4 +10,6 @@ public interface AssignmentSubmissionService {
     public List<AssignmentSubmission> findAllByAssignmentId(Integer  assignment);
     public List<AssignmentSubmission> findAllByEnrollmentId(Integer  enrollment);
     public List<AssignmentSubmission> findAllBySubmissionStatusId(Integer  submissionStatus);
+    List<AssignmentSubmission> getSubmissionsByPersonId(Integer personId);
+    List<AssignmentSubmission> getSubmissionsByModuleAndStudentName(Integer batchId,Integer moduleId, String studentName);
 }
