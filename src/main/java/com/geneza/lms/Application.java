@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import io.github.cdimascio.dotenv.Dotenv;
 import javax.servlet.Filter;
 
 
@@ -18,6 +19,10 @@ import javax.servlet.Filter;
 
 @SpringBootApplication
 public class Application {
+
+    Dotenv dotenv = Dotenv.load();
+String accessKey = dotenv.get("AWS_ACCESS_KEY_ID");
+String secretKey = dotenv.get("AWS_SECRET_ACCESS_KEY");
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
