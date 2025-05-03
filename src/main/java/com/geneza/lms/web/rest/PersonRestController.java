@@ -37,7 +37,7 @@ public class PersonRestController {
     @Autowired
     private FileStorageService fileStorageService;
 
-    @RequestMapping(value = "/Person", method = RequestMethod.PUT)
+    @RequestMapping(value = "/Person", method = RequestMethod.POST)
     @ResponseBody
     public Person savePerson(@RequestBody Person person) {
     personService.savePerson(person);
