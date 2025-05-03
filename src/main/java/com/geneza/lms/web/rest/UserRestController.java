@@ -19,12 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import io.swagger.v3.oas.annotations.Hidden;
 
 
 @CrossOrigin
 @Controller("UserRestController")
-@Hidden
 public class UserRestController {
 
     @Autowired

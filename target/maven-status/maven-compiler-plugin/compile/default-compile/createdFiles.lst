@@ -51,6 +51,7 @@ com/geneza/lms/service/AttendanceService.class
 com/geneza/lms/domain/CompetencyCategory.class
 com/geneza/lms/service/impl/PersonServiceImpl.class
 com/geneza/lms/service/impl/AssignmentServiceImpl.class
+com/geneza/lms/config/config.class
 com/geneza/lms/web/rest/AssignmentRestController.class
 com/geneza/lms/web/rest/SubmissionStatusRestController.class
 com/geneza/lms/web/rest/CourseRestController.class
@@ -64,6 +65,7 @@ com/geneza/lms/web/rest/CompetencyCriterionRestController.class
 com/geneza/lms/service/impl/S3FileStorageServiceImpl.class
 com/geneza/lms/service/CompetencyCriterionService.class
 com/geneza/lms/service/FileStorageService.class
+com/geneza/lms/domain/enums/ValidationStatus.class
 com/geneza/lms/domain/Assignment.class
 com/geneza/lms/persistence/ModuleRepository.class
 com/geneza/lms/domain/Batch.class

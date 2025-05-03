@@ -2,7 +2,13 @@ package com.geneza.lms.web.rest;
 import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.persistence.EnrollmentRepository;
 import com.geneza.lms.service.EnrollmentService;
+import java.util.Optional;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -60,6 +66,44 @@ public ResponseEntity<?> newEnrollment(@RequestBody Enrollment enrollment) {
                 .body("Unexpected error: " + ex.getMessage());
     }
 }
+
+@RequestMapping(value = "/Enrollments", method = RequestMethod.POST)
+@ResponseBody
+public ResponseEntity<?> newEnrollments(@RequestBody List<Enrollment> enrollments) {
+    List<Enrollment> inserted = new ArrayList<>();
+    List<Enrollment> duplicates = new ArrayList<>();
+
+    for (Enrollment enrollment : enrollments) {
+        try {
+            enrollmentService.saveEnrollment(enrollment);
+            Enrollment saved = enrollmentRepository.findById(enrollment.getId()); // if it returns entity directly
+            if (saved != null) {
+                inserted.add(saved);
+            } else {
+                inserted.add(enrollment); // fallback if ID is already in the object
+            }
+        } catch (DataIntegrityViolationException ex) {
+            Throwable cause = ex.getCause();
+            if (cause instanceof org.hibernate.exception.ConstraintViolationException) {
+                duplicates.add(enrollment);
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body("Unexpected database error occurred.");
+            }
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Unexpected error: " + ex.getMessage());
+        }
+    }
+
+    Map<String, Object> result = new HashMap<>();
+    result.put("inserted", inserted);
+    result.put("duplicates", duplicates);
+
+    return ResponseEntity.ok(result);
+}
+
+
 
 
     @RequestMapping(value = "/Enrollment", method = RequestMethod.GET)

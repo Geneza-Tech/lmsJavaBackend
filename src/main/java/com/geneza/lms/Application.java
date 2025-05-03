@@ -20,9 +20,9 @@ import javax.servlet.Filter;
 @SpringBootApplication
 public class Application {
 
-    Dotenv dotenv = Dotenv.load();
-String accessKey = dotenv.get("AWS_ACCESS_KEY_ID");
-String secretKey = dotenv.get("AWS_SECRET_ACCESS_KEY");
+//     Dotenv dotenv = Dotenv.load();
+// String accessKey = dotenv.get("AWS_ACCESS_KEY_ID");
+// String secretKey = dotenv.get("AWS_SECRET_ACCESS_KEY");
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

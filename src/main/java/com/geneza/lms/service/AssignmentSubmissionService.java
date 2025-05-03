@@ -1,6 +1,10 @@
 package com.geneza.lms.service;
+import com.geneza.lms.domain.Assignment;
 import com.geneza.lms.domain.AssignmentSubmission;
+import com.geneza.lms.domain.Enrollment;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface AssignmentSubmissionService {
     public AssignmentSubmission findById(Integer id);
@@ -11,5 +15,6 @@ public interface AssignmentSubmissionService {
     public List<AssignmentSubmission> findAllByEnrollmentId(Integer  enrollment);
     public List<AssignmentSubmission> findAllBySubmissionStatusId(Integer  submissionStatus);
     List<AssignmentSubmission> getSubmissionsByPersonId(Integer personId);
-    List<AssignmentSubmission> getSubmissionsByModuleAndStudentName(Integer batchId,Integer moduleId, String studentName);
+    List<AssignmentSubmission> getSubmissionsByModuleAndStudentId(Integer batchId,Integer moduleId, Integer studentId);
+   
 }

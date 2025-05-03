@@ -3,6 +3,7 @@ import com.geneza.lms.domain.AssignmentSubmission;
 import com.geneza.lms.persistence.AssignmentSubmissionRepository;
 import com.geneza.lms.service.AssignmentSubmissionService;
 import com.geneza.lms.service.FileStorageService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -45,12 +46,43 @@ public class AssignmentSubmissionRestController {
         return assignmentSubmissionRepository.findById(assignmentSubmission.getId());
     }
 
-    @RequestMapping(value = "/AssignmentSubmission", method = RequestMethod.POST)
-    @ResponseBody
-    public AssignmentSubmission newAssignmentSubmission(@RequestBody AssignmentSubmission assignmentSubmission) {
-    assignmentSubmissionService.saveAssignmentSubmission(assignmentSubmission);
+    // @RequestMapping(value = "/AssignmentSubmission", method = RequestMethod.POST)
+    // @ResponseBody
+    // public AssignmentSubmission newAssignmentSubmission(@RequestBody AssignmentSubmission assignmentSubmission) {
+    // assignmentSubmissionService.saveAssignmentSubmission(assignmentSubmission);
+    //     return assignmentSubmissionRepository.findById(assignmentSubmission.getId());
+    // }
+    @RequestMapping(value = "/AssignmentSubmission/submitWithFile", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+@ResponseBody
+public AssignmentSubmission createAssignmentSubmissionWithFile(
+        @RequestPart("assignmentSubmission") String assignmentSubmissionJson,
+        @RequestPart(value = "file", required = false) MultipartFile file) {
+
+    try {
+        // ✅ Parse the JSON string to an object
+        ObjectMapper mapper = new ObjectMapper();
+        AssignmentSubmission assignmentSubmission = mapper.readValue(assignmentSubmissionJson, AssignmentSubmission.class);
+
+        // ✅ Upload file if present
+        if (file != null && !file.isEmpty()) {
+            String fileUrl = fileStorageService.uploadFile(file);
+            assignmentSubmission.setFileUrl(fileUrl);
+        }
+
+        // ✅ Save submission
+        assignmentSubmissionService.saveAssignmentSubmission(assignmentSubmission);
+
+        // ✅ Return it
         return assignmentSubmissionRepository.findById(assignmentSubmission.getId());
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new RuntimeException("Failed to submit assignment: " + e.getMessage());
     }
+}
+
+   
+
 
     @RequestMapping(value = "/AssignmentSubmission", method = RequestMethod.GET)
     @ResponseBody
@@ -112,31 +144,31 @@ public class AssignmentSubmissionRestController {
     }
 
 
-    @RequestMapping(value = "/AssignmentSubmission/{submissionId}/upload", method = RequestMethod.POST)
-    @ResponseBody
-    public String uploadFileToS3(@PathVariable Integer submissionId,
-                                 @RequestPart("file") MultipartFile file) {
-        try {
-            // Upload file to S3
-            String fileUrl = fileStorageService.uploadFile(file);
+    // @RequestMapping(value = "/AssignmentSubmission/{submissionId}/upload", method = RequestMethod.POST)
+    // @ResponseBody
+    // public String uploadFileToS3(@PathVariable Integer submissionId,
+    //                              @RequestPart("file") MultipartFile file) {
+    //     try {
+    //         // Upload file to S3
+    //         String fileUrl = fileStorageService.uploadFile(file);
 
-            // Update the submission entity with the S3 URL
-            AssignmentSubmission submission = assignmentSubmissionRepository.findById(submissionId);
-            if (submission == null) {
-                throw new RuntimeException("Submission not found");
-            }
-            submission.setFileUrl(fileUrl);
-            assignmentSubmissionRepository.save(submission);
+    //         // Update the submission entity with the S3 URL
+    //         AssignmentSubmission submission = assignmentSubmissionRepository.findById(submissionId);
+    //         if (submission == null) {
+    //             throw new RuntimeException("Submission not found");
+    //         }
+    //         submission.setFileUrl(fileUrl);
+    //         assignmentSubmissionRepository.save(submission);
             
 
 
-            return "File uploaded successfully: " + fileUrl;
+    //         return "File uploaded successfully: " + fileUrl;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Upload failed: " + e.getMessage();
-        }
-    }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         return "Upload failed: " + e.getMessage();
+    //     }
+    // }
 
     
     @RequestMapping(value = "/AssignmentSubmission/byperson/{personId}", method = RequestMethod.GET)
@@ -148,10 +180,10 @@ public class AssignmentSubmissionRestController {
     @RequestMapping(value = "/AssignmentSubmission/bymodule", method = RequestMethod.GET)
     @ResponseBody
     public List<AssignmentSubmission> getSubmissions(
-            @RequestParam("batchId") Integer batchId,
+            @RequestParam(value = "batchId", required = false) Integer batchId,
             @RequestParam(value = "moduleId", required = false) Integer moduleId,
-            @RequestParam(value = "studentName", required = false) String studentName) {
-        return assignmentSubmissionService.getSubmissionsByModuleAndStudentName(batchId,moduleId,studentName);
+            @RequestParam(value = "studentId", required = false) Integer studentId) {
+        return assignmentSubmissionService.getSubmissionsByModuleAndStudentId(batchId,moduleId,studentId);
     }
 
 }

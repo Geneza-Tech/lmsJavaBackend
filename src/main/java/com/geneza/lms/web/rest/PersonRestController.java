@@ -1,6 +1,8 @@
 package com.geneza.lms.web.rest; 
 import com.geneza.lms.domain.Person;
+import com.geneza.lms.domain.enums.ValidationStatus;
 import com.geneza.lms.persistence.PersonRepository;
+import com.geneza.lms.service.FileStorageService;
 import com.geneza.lms.service.PersonService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +34,9 @@ public class PersonRestController {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private FileStorageService fileStorageService;
+
     @RequestMapping(value = "/Person", method = RequestMethod.PUT)
     @ResponseBody
     public Person savePerson(@RequestBody Person person) {
@@ -37,12 +44,37 @@ public class PersonRestController {
         return personRepository.findById(person.getId());
     }
 
-    @RequestMapping(value = "/Person", method = RequestMethod.POST)
-    @ResponseBody
-    public Person newPerson(@RequestBody Person person) {
-    personService.savePerson(person);
-        return personRepository.findById(person.getId());
+    // @RequestMapping(value = "/Person", method = RequestMethod.POST)
+    // @ResponseBody
+    // public Person newPerson(@RequestBody Person person) {
+    // personService.savePerson(person);
+    //     return personRepository.findById(person.getId());
+    // }
+
+    @RequestMapping(value = "/Person/uploadPhoto", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+@ResponseBody
+public Person uploadPersonPhoto(
+        @RequestPart("personId") Integer personId,
+        @RequestPart("file") MultipartFile file) {
+
+    try {
+        Person person = personService.findById(personId);
+        if (person == null) {
+            throw new RuntimeException("Person not found with ID: " + personId);
+        }
+
+        String photoUrl = fileStorageService.uploadFile(file);
+        person.setPhoto(photoUrl);
+        personService.savePerson(person);
+
+        return personRepository.findById(personId);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new RuntimeException("Photo upload failed: " + e.getMessage());
     }
+}
+
 
     @RequestMapping(value = "/Person", method = RequestMethod.GET)
     @ResponseBody
@@ -116,6 +148,15 @@ public Page<Person> searchPersons(
     return personService.searchPersons(search, pageable);
 }
 
+@RequestMapping(value = "Person/{id}/validation-status", method = RequestMethod.PUT)
+@ResponseBody
+    public Person updateValidationStatus(@PathVariable Integer id,
+                                         @RequestParam ValidationStatus status) {
+        return personService.updateValidationStatus(id, status);
+    }
+
+    
+    
     
 
 }

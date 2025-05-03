@@ -16,7 +16,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "assignmentsubmission")
+@Table(name = "assignmentsubmission",uniqueConstraints = @UniqueConstraint(columnNames = {"assignment", "enrollment"}))
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace = "GenezaRest/com/geneza/lms/domain", name = "assignmentsubmission")
 public class AssignmentSubmission implements Serializable {

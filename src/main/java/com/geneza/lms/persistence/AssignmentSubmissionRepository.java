@@ -1,6 +1,11 @@
 package com.geneza.lms.persistence;  
+import com.geneza.lms.domain.Assignment;
 import com.geneza.lms.domain.AssignmentSubmission;
+import com.geneza.lms.domain.Enrollment;
+
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,19 +31,17 @@ List<AssignmentSubmission> findByPersonId(@Param("personId") Integer personId);
        "JOIN a.module m " +
        "JOIN s.enrollment e " +
        "JOIN e.batch b " +
-       "WHERE b.id = :batchId " +
+       "WHERE (:batchId IS NULL OR b.id = :batchId) " +
        "AND (:moduleId IS NULL OR m.id = :moduleId) " +
-       "AND (:studentName IS NULL OR :studentName = '' OR " +
-       "LOWER(CONCAT(e.student.firstName, ' ', e.student.lastName)) " +
-       "LIKE LOWER(CONCAT('%', :studentName, '%'))) ")
+       "AND (:studentId IS NULL OR e.student.id = :studentId) ")
 List<AssignmentSubmission> findByBatchAndOptionalModuleAndStudent(
         @Param("batchId") Integer batchId,
         @Param("moduleId") Integer moduleId,
-        @Param("studentName") String studentName);
+        @Param("studentId") Integer studentId);
 
 
 
-
+ Optional<AssignmentSubmission> findByAssignmentAndEnrollment(Assignment assignment, Enrollment enrollment);
 
 
 

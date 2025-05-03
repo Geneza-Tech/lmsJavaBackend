@@ -3,6 +3,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import com.geneza.lms.domain.enums.ValidationStatus;
+
 
 /**
  * Person Entity
@@ -24,6 +26,10 @@ public class Person implements Serializable {
     @Column(name = "firstname")
     @XmlElement
     private String firstName;
+
+    @Column(name = "middlename") // NEW FIELD
+    @XmlElement
+    private String middleName;
 
     @Column(name = "lastname")
     @XmlElement
@@ -56,6 +62,11 @@ public class Person implements Serializable {
     @Column(name = "presentStatus")
     @XmlElement
     private String presentStatus;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "validationstatus")
+    @XmlElement
+    private ValidationStatus validationstatus;
 
     @Column(name = "gender")
     @XmlElement
@@ -103,10 +114,30 @@ public class Person implements Serializable {
     @XmlTransient
     private Country countryId;
 
+    @Column(name = "validationcomment") // NEW FIELD
+    @XmlElement
+    private String validationComment;
+
+    @Column(name = "enrollmentdate") // NEW FIELD
+    @Temporal(TemporalType.DATE)
+    @XmlElement
+    private Date enrollmentDate;
+
+    @Column(name = "highestqualification") // NEW FIELD
+    @XmlElement
+    private String highestQualification;
+
+    @Column(name = "photo") // Now storing a URL string instead of binary data
+    @XmlElement
+    private String photo;
+
 
     // Getters and Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
+
+    public ValidationStatus getvalidationstatus() { return validationstatus; }
+    public void setvalidationstatus(ValidationStatus validationstatus) { this.validationstatus = validationstatus; }
     
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
@@ -164,6 +195,21 @@ public class Person implements Serializable {
     
     public String getSpouseName() { return spouseName; }
     public void setSpouseName(String spouseName) { this.spouseName = spouseName; }
+
+    public String getMiddleName() { return middleName; }
+    public void setMiddleName(String middleName) { this.middleName = middleName; }
+
+    public Date getEnrollmentDate() { return enrollmentDate; }
+    public void setEnrollmentDate(Date enrollmentDate) { this.enrollmentDate = enrollmentDate; }
+
+    public String getHighestQualification() { return highestQualification; }
+    public void setHighestQualification(String highestQualification) { this.highestQualification = highestQualification; }
+
+    public String getPhoto() { return photo; }
+public void setPhoto(String photo) { this.photo = photo; }
+
+    public String getValidationComment() { return validationComment; }
+    public void setValidationComment(String validationComment) { this.validationComment = validationComment; }
 
     public Person() {
     }

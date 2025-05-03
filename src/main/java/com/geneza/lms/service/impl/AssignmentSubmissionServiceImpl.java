@@ -9,6 +9,8 @@ import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.domain.SubmissionStatus;
 import com.geneza.lms.service.AssignmentSubmissionService;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,42 +44,42 @@ public class AssignmentSubmissionServiceImpl implements AssignmentSubmissionServ
     }
      
     @Transactional
-    public void saveAssignmentSubmission(AssignmentSubmission assignmentSubmission) {
-
-        if (assignmentSubmission.getAssignment() != null && assignmentSubmission.getAssignment().getId() != null) {
-            Assignment assignment = assignmentRepository.findById(assignmentSubmission.getAssignment().getId());
-            if (assignment == null) throw new RuntimeException("Assignment not found");
-            assignmentSubmission.setAssignment(assignment);
-        }
-    
-        if (assignmentSubmission.getEnrollment() != null && assignmentSubmission.getEnrollment().getId() != null) {
-            Enrollment enrollment = enrollmentRepository.findById(assignmentSubmission.getEnrollment().getId());
-            if (enrollment == null) throw new RuntimeException("Enrollment not found");
-            assignmentSubmission.setEnrollment(enrollment);
-        }
-    
-        if (assignmentSubmission.getSubmissionStatus() != null && assignmentSubmission.getSubmissionStatus().getId() != null) {
-            SubmissionStatus submissionStatus = submissionStatusRepository.findById(assignmentSubmission.getSubmissionStatus().getId());
-            if (submissionStatus == null) throw new RuntimeException("SubmissionStatus not found");
-            assignmentSubmission.setSubmissionStatus(submissionStatus);
-        }
-
-        AssignmentSubmission existingAssignmentSubmission = assignmentSubmissionRepository.findById(assignmentSubmission.getId());
-    if (existingAssignmentSubmission != null) {
-        if (existingAssignmentSubmission != assignmentSubmission) {
-            existingAssignmentSubmission.setAssignment(assignmentSubmission.getAssignment());
-            existingAssignmentSubmission.setEnrollment(assignmentSubmission.getEnrollment());
-            existingAssignmentSubmission.setSubmissionContent(assignmentSubmission.getSubmissionContent());
-            existingAssignmentSubmission.setComment(assignmentSubmission.getComment());
-            existingAssignmentSubmission.setSubmissionStatus(assignmentSubmission.getSubmissionStatus());
-            assignmentSubmissionRepository.save(existingAssignmentSubmission);
-        }
-    } else {
-        assignmentSubmissionRepository.save(assignmentSubmission);
+public void saveAssignmentSubmission(AssignmentSubmission assignmentSubmission) {
+    if (assignmentSubmission.getAssignment() != null && assignmentSubmission.getAssignment().getId() != null) {
+        Assignment assignment = assignmentRepository.findById(assignmentSubmission.getAssignment().getId());
+        if (assignment == null) throw new RuntimeException("Assignment not found");
+        assignmentSubmission.setAssignment(assignment);
     }
 
-    assignmentSubmissionRepository.flush();
+    if (assignmentSubmission.getEnrollment() != null && assignmentSubmission.getEnrollment().getId() != null) {
+        Enrollment enrollment = enrollmentRepository.findById(assignmentSubmission.getEnrollment().getId());
+        if (enrollment == null) throw new RuntimeException("Enrollment not found");
+        assignmentSubmission.setEnrollment(enrollment);
     }
+
+    if (assignmentSubmission.getSubmissionStatus() != null && assignmentSubmission.getSubmissionStatus().getId() != null) {
+        SubmissionStatus submissionStatus = submissionStatusRepository.findById(assignmentSubmission.getSubmissionStatus().getId());
+        if (submissionStatus == null) throw new RuntimeException("SubmissionStatus not found");
+        assignmentSubmission.setSubmissionStatus(submissionStatus);
+    }
+
+    // 🔍 Check for duplicate submission for same assignment + enrollment
+    Optional<AssignmentSubmission> existing = assignmentSubmissionRepository
+        .findByAssignmentAndEnrollment(
+            assignmentSubmission.getAssignment(),
+            assignmentSubmission.getEnrollment()
+        );
+
+    if (existing.isPresent()) {
+        // If it's a new submission, reject
+        if (assignmentSubmission.getId() == null || !existing.get().getId().equals(assignmentSubmission.getId())) {
+            throw new IllegalStateException("A submission already exists for this assignment and enrollment.");
+        }
+    }
+
+    assignmentSubmissionRepository.save(assignmentSubmission);
+}
+
 
     public boolean deleteAssignmentSubmission(Integer assignmentSubmissionId) {
         AssignmentSubmission assignmentSubmission = assignmentSubmissionRepository.findById(assignmentSubmissionId);
@@ -104,7 +106,9 @@ public class AssignmentSubmissionServiceImpl implements AssignmentSubmissionServ
     }
     
     @Override
-    public List<AssignmentSubmission> getSubmissionsByModuleAndStudentName(Integer batchId,Integer moduleId, String studentName) {
-        return assignmentSubmissionRepository.findByBatchAndOptionalModuleAndStudent(batchId ,moduleId, studentName);
+    public List<AssignmentSubmission> getSubmissionsByModuleAndStudentId(Integer batchId,Integer moduleId, Integer studentId) {
+        return assignmentSubmissionRepository.findByBatchAndOptionalModuleAndStudent(batchId ,moduleId, studentId);
     }
+
+    
 }
