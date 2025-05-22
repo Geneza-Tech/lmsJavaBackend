@@ -30,43 +30,44 @@ public class PersonServiceImpl implements PersonService {
     }
      
     @Transactional
-public void savePerson(Person person) {
-    Person existingPerson = personRepository.findById(person.getId());
-    if (existingPerson != null) {
-        if (existingPerson != person) {
-            existingPerson.setId(person.getId());
-            existingPerson.setFirstName(person.getFirstName());
-            existingPerson.setMiddleName(person.getMiddleName()); // new field
-            existingPerson.setLastName(person.getLastName());
-            existingPerson.setPhone(person.getPhone());
-            existingPerson.setEmail(person.getEmail());
-            existingPerson.setRollNumber(person.getRollNumber());
-            existingPerson.setCountry(person.getCountry());
-            existingPerson.setState(person.getState());
-            existingPerson.setRegion(person.getRegion());
-            existingPerson.setPresentStatus(person.getPresentStatus());
-            existingPerson.setvalidationstatus(person.getvalidationstatus());
-            existingPerson.setValidationComment(person.getValidationComment()); // new field
-            existingPerson.setGender(person.getGender());
-            existingPerson.setDob(person.getDob());
-            existingPerson.setEnrollmentDate(person.getEnrollmentDate()); // new field
-            existingPerson.setPresentAddressStreet(person.getPresentAddressStreet());
-            existingPerson.setPresentAddressState(person.getPresentAddressState());
-            existingPerson.setPresentAddressCity(person.getPresentAddressCity());
-            existingPerson.setPresentAddressPin(person.getPresentAddressPin());
-            existingPerson.setPresentAddressCountry(person.getPresentAddressCountry());
-            existingPerson.setFatherName(person.getFatherName());
-            existingPerson.setMaritalStatus(person.getMaritalStatus());
-            existingPerson.setSpouseName(person.getSpouseName());
-            existingPerson.setHighestQualification(person.getHighestQualification()); // new field
-            existingPerson.setPhoto(person.getPhoto()); // new field
+    public void savePerson(Person person) {
+        Person existingPerson = personRepository.findById(person.getId());
+        if (existingPerson != null) {
+            if (existingPerson != person) {
+                existingPerson.setId(person.getId());
+                existingPerson.setFirstName(person.getFirstName());
+                existingPerson.setMiddleName(person.getMiddleName()); // new field
+                existingPerson.setLastName(person.getLastName());
+                existingPerson.setPhone(person.getPhone());
+                existingPerson.setEmail(person.getEmail());
+                existingPerson.setRollNumber(person.getRollNumber());
+                existingPerson.setCountry(person.getCountry());
+                existingPerson.setState(person.getState());
+                existingPerson.setRegion(person.getRegion());
+                existingPerson.setPresentStatus(person.getPresentStatus());
+                existingPerson.setvalidationstatus(person.getvalidationstatus());
+                existingPerson.setValidationComment(person.getValidationComment()); // new field
+                existingPerson.setGender(person.getGender());
+                existingPerson.setDob(person.getDob());
+                existingPerson.setEnrollmentDate(person.getEnrollmentDate()); // new field
+                existingPerson.setaddress(person.getaddress());
+                existingPerson.setZone(person.geZone());
+                existingPerson.setFatherName(person.getFatherName());
+                existingPerson.setMaritalStatus(person.getMaritalStatus());
+                existingPerson.setSpouseName(person.getSpouseName());
+                existingPerson.setPincode(person.getPincode());
+                existingPerson.setDateOfJoining(person.getDateOfJoining()); // new field
+                existingPerson.setDateOfLeaving(person.getDateOfLeaving());
+                existingPerson.setHighestQualification(person.getHighestQualification()); // new field
+                existingPerson.setPhoto(person.getPhoto()); // new field 
+                existingPerson.setReasonOfLeaving(person.getReasonOfLeaving());
+            }
+            person = personRepository.save(existingPerson);
+        } else {
+            person = personRepository.save(person);
         }
-        person = personRepository.save(existingPerson);
-    } else {
-        person = personRepository.save(person);
+        personRepository.flush();
     }
-    personRepository.flush();
-}
 
 
     public boolean deletePerson(Integer personId) {

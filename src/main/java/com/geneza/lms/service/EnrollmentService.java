@@ -15,4 +15,7 @@ public interface EnrollmentService {
     Page<Enrollment> findAllByBatchId(Integer batchId, Pageable pageable);
     public List<Enrollment> findAllByStudentId(Integer  student);
     List<Batch> findBatchesByStudentId(Integer studentId);
+    List<Enrollment> findAllByRole(String role);
+    List<Enrollment> findAllByBatchId(Integer batchId);
+
 }

@@ -39,6 +39,10 @@ public class Enrollment implements Serializable {
     @JoinColumn(name="student")
     private Person student;
 
+    @Column(name = "role")
+    @XmlElement
+    private String role;
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -64,6 +68,9 @@ public class Enrollment implements Serializable {
     public void setStudent(Person student) {
         this.student = student;
     }
+
+    public String getRole() { return role; }
+    public void setRole(String email) { this.role = role; }
 
 
     public Enrollment() {

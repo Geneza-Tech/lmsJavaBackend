@@ -23,7 +23,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 
 @Controller("PersonRestController")
 public class PersonRestController {
@@ -37,32 +38,66 @@ public class PersonRestController {
     @Autowired
     private FileStorageService fileStorageService;
 
-    @RequestMapping(value = "/Person", method = RequestMethod.POST)
+    @RequestMapping(value = "/Person", method = RequestMethod.PUT)
     @ResponseBody
     public Person savePerson(@RequestBody Person person) {
     personService.savePerson(person);
         return personRepository.findById(person.getId());
     }
 
-    // @RequestMapping(value = "/Person", method = RequestMethod.POST)
-    // @ResponseBody
-    // public Person newPerson(@RequestBody Person person) {
-    // personService.savePerson(person);
-    //     return personRepository.findById(person.getId());
-    // }
+    @RequestMapping(value = "/Person", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+@ResponseBody
+public Person newPerson(
+        @RequestPart("personData") String personDataJson,
+        @RequestPart(value = "file", required = false) MultipartFile file) {
+
+    try {
+        // Parse the JSON string to create a Person object
+        ObjectMapper mapper = new ObjectMapper();
+        Person person = mapper.readValue(personDataJson, Person.class);
+
+        // Upload photo if present
+        if (file != null && !file.isEmpty()) {
+            String photoUrl = fileStorageService.uploadFile(file);
+            person.setPhoto(photoUrl);
+        }
+
+        // Save person
+        personService.savePerson(person);
+
+        return personRepository.findById(person.getId());
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new RuntimeException("Creating person failed: " + e.getMessage());
+    }
+}
+
 
     @RequestMapping(value = "/Person/uploadPhoto", method = RequestMethod.POST, consumes = {"multipart/form-data"})
 @ResponseBody
 public Person uploadPersonPhoto(
-        @RequestPart("personId") Integer personId,
+        @RequestPart("personData") String personDataJson,
         @RequestPart("file") MultipartFile file) {
 
     try {
+        // Parse the JSON string to get person ID
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode personData = mapper.readTree(personDataJson);
+        
+        // Check if personId exists in the JSON
+        if (!personData.has("personId") || personData.get("personId").isNull()) {
+            throw new RuntimeException("personId is required in personData JSON");
+        }
+        
+        Integer personId = personData.get("personId").asInt();
+
+        // Find the person
         Person person = personService.findById(personId);
         if (person == null) {
             throw new RuntimeException("Person not found with ID: " + personId);
         }
 
+        // Upload the file
         String photoUrl = fileStorageService.uploadFile(file);
         person.setPhoto(photoUrl);
         personService.savePerson(person);

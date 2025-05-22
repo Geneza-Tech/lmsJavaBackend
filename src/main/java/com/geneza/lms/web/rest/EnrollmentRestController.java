@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,7 +68,7 @@ public ResponseEntity<?> newEnrollment(@RequestBody Enrollment enrollment) {
     }
 }
 
-@RequestMapping(value = "/Enrollments", method = RequestMethod.POST)
+@RequestMapping(value = "/Enrollments/multiple", method = RequestMethod.POST)
 @ResponseBody
 public ResponseEntity<?> newEnrollments(@RequestBody List<Enrollment> enrollments) {
     List<Enrollment> inserted = new ArrayList<>();
@@ -168,5 +169,22 @@ public ResponseEntity<?> newEnrollments(@RequestBody List<Enrollment> enrollment
     public List<Enrollment> getAllByStudentId(@PathVariable("student_id") Integer studentId) {
         return new java.util.ArrayList<Enrollment>(enrollmentService.findAllByStudentId(studentId));
     }
+
+    @RequestMapping(value = "/Enrollment/role/{role}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Enrollment> getAllByRole(
+            @PathVariable(value = "role", required = true) String role) {
+       
+            return enrollmentService.findAllByRole( role);
+        
+    }
+
+    @RequestMapping(value = "/Enrollment/Batch/{batch_id}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Enrollment> getAllByBatchId(@PathVariable("batch_id") Integer batchId) {
+        return enrollmentService.findAllByBatchId(batchId);
+    }
+
+
 
 }

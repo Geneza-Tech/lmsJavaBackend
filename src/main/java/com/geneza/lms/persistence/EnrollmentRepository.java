@@ -20,5 +20,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
    Page<Enrollment> findByBatchId(Integer batchId, Pageable pageable);
    @Query("SELECT e.batch FROM Enrollment e WHERE e.student.id = :studentId")
     List<Batch> findBatchesByStudentId(@Param("studentId") Integer studentId);
+    List<Enrollment> findByRole(String role);
+    List<Enrollment> findByBatchId(Integer batchId);
 
 }

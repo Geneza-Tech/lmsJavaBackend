@@ -37,6 +37,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         existingEnrollment.setId(enrollment.getId());
                 existingEnrollment.setBatch(enrollment.getBatch());
                 existingEnrollment.setStudent(enrollment.getStudent());
+                existingEnrollment.setRole(enrollment.getRole());
         }
         enrollment = enrollmentRepository.save(existingEnrollment);
     }else{
@@ -76,5 +77,17 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     public List<Batch> findBatchesByStudentId(Integer studentId) {
         return enrollmentRepository.findBatchesByStudentId(studentId);
     }
+
+    @Override
+    public List<Enrollment> findAllByRole(String role) {
+    return enrollmentRepository.findByRole( role);
+    }
+
+    @Override
+    public List<Enrollment> findAllByBatchId(Integer batchId) {
+        return enrollmentRepository.findByBatchId(batchId);
+    }
+
+
 
 }
