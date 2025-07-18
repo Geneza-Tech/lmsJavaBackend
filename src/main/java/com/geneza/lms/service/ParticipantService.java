@@ -15,7 +15,7 @@ public class ParticipantService {
     private static final String BASE_URL = "https://backend.staging.autographa.io/survey";
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public Long findOrCreateParticipant(Long personId, String fullName, String email) {
+    public Long findOrCreateParticipant(Long personId, String fullName, String email, String role) {
     try {
         // STEP 1: Try to fetch existing participant by personId using the new endpoint
         String url = BASE_URL + "/Participant/Person/" + personId;
@@ -85,6 +85,7 @@ public class ParticipantService {
         private String lastName;
         private String email;
         private String phone;
+        private String role;
 
         // Add other fields if needed
 
@@ -102,6 +103,9 @@ public class ParticipantService {
 
         public String getPhone() { return phone; }
         public void setPhone(String phone) { this.phone = phone; }
+
+        public String getRole() { return role; }
+        public void setRole(String role) { this.role = role; }
     }
 }
 

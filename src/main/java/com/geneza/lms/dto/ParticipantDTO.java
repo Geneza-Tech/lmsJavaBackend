@@ -16,6 +16,7 @@ public class ParticipantDTO {
         private String lastName;
         private String email;
         private String phone;
+        private String role;
 
         // Add other fields if needed
 
@@ -33,6 +34,9 @@ public class ParticipantDTO {
 
         public String getPhone() { return phone; }
         public void setPhone(String phone) { this.phone = phone; }
+
+        public String getRole() { return role; }
+        public void setRole(String role) { this.role = role; }
     }
 }
 

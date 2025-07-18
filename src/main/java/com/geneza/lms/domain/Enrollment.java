@@ -70,7 +70,7 @@ public class Enrollment implements Serializable {
     }
 
     public String getRole() { return role; }
-    public void setRole(String email) { this.role = role; }
+    public void setRole(String role) { this.role = role; }
 
 
     public Enrollment() {

@@ -97,13 +97,13 @@ public void saveBatchSurvey(BatchSurvey batchSurvey) {
 
     for (Integer personId : personIds) {
         if (linkPersonIds.isEmpty()) {
-            boolean success = createResponseFromPerson(personId.longValue(), null, surveyId, batchId, null, null);
+            boolean success = createResponseFromPerson(personId.longValue(), null, surveyId, batchId, null,null, recipientRole);
             if (!success) {
                 failedResponses.add("Person: " + personId);
             }
         } else {
             for (Integer linkPersonId : linkPersonIds) {
-                boolean success = createResponseFromPerson(personId.longValue(), linkPersonId.longValue(), surveyId, batchId, linkRole, null);
+                boolean success = createResponseFromPerson(personId.longValue(), linkPersonId.longValue(), surveyId, batchId, linkRole, null,recipientRole);
                 if (!success) {
                     failedResponses.add("Person: " + personId + ", Link: " + linkPersonId);
                 }
@@ -119,16 +119,16 @@ public void saveBatchSurvey(BatchSurvey batchSurvey) {
 }
 
 
-    private boolean createResponseFromPerson(Long personId, Long linkPersonId, Integer surveyId, Integer batchId, String linkType, String linkComment) {
+    private boolean createResponseFromPerson(Long personId, Long linkPersonId, Integer surveyId, Integer batchId, String linkType, String linkComment, String recipientRole) {
     try {
-        Long participantId = participantService.findOrCreateParticipant(personId, null, null);
+        Long participantId = participantService.findOrCreateParticipant(personId, null, null ,recipientRole);
         if (participantId == null) {
             throw new RuntimeException("Could not resolve participantId for personId: " + personId);
         }
 
         Long linkParticipantId = null;
         if (linkPersonId != null) {
-            linkParticipantId = participantService.findOrCreateParticipant(linkPersonId, null, null);
+            linkParticipantId = participantService.findOrCreateParticipant(linkPersonId, null, null,recipientRole);
             if (linkParticipantId == null) {
                 throw new RuntimeException("Could not resolve link participantId for personId: " + linkPersonId);
             }
@@ -198,6 +198,9 @@ public void saveBatchSurvey(BatchSurvey batchSurvey) {
             case "LQC":
                 return enrollmentRepository.findByBatchIdAndRole(batchId, "LQC")
                         .stream().map(e -> e.getStudent().getId()).collect(Collectors.toList());
+             case "ICT":
+                return enrollmentRepository.findByBatchIdAndRole(batchId, "ICT")
+                        .stream().map(e -> e.getStudent().getId()).collect(Collectors.toList());            
             case "MENTOR":
                 return batchMentorRepository.findAllByBatchId(batchId)
                         .stream().map(bm -> bm.getMentor().getId()).collect(Collectors.toList());
