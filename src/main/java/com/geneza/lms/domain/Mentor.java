@@ -34,7 +34,7 @@ public class Mentor implements Serializable {
     
     
     @ManyToOne
-    @JoinColumn(name="mentorId")
+    @JoinColumn(name="mentorid")
     private Person mentor;
 
 

@@ -148,6 +148,7 @@ public void saveBatchSurvey(BatchSurvey batchSurvey) {
         dto.setLinkId(linkParticipantId != null ? linkParticipantId.intValue() : null);
         dto.setLinkType(linkType);
         dto.setLinkcomment(linkComment);
+        dto.setRole(recipientRole);
 
                 HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -202,12 +203,12 @@ public void saveBatchSurvey(BatchSurvey batchSurvey) {
                 return enrollmentRepository.findByBatchIdAndRole(batchId, "ICT")
                         .stream().map(e -> e.getStudent().getId()).collect(Collectors.toList());            
             case "MENTOR":
-                return batchMentorRepository.findAllByBatchId(batchId)
-                        .stream().map(bm -> bm.getMentor().getId()).collect(Collectors.toList());
-
+            return batchMentorRepository.findAllByBatchId(batchId)
+                    .stream().map(bm -> bm.getMentor().getMentor().getId()).collect(Collectors.toList());
             case "TRAINER":
-            return batchTrainerRepository.findAllByBatchId(batchId)
-                    .stream().map(bt -> bt.getTrainer().getId()).collect(Collectors.toList());
+                return batchTrainerRepository.findAllByBatchId(batchId)
+                        .stream().map(bt -> bt.getTrainer().getTrainer().getId()).collect(Collectors.toList());
+
 
             default:
                 return Collections.emptyList();

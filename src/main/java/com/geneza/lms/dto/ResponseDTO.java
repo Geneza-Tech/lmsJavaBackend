@@ -7,6 +7,7 @@ public class ResponseDTO {
     private Integer batchId;
     private String linkType;
     private String linkcomment;
+    private String role;
 
     public ResponseSurvey getSurvey() {
         return survey;
@@ -54,5 +55,13 @@ public class ResponseDTO {
 
     public void setLinkcomment(String linkcomment) {
         this.linkcomment = linkcomment;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
