@@ -119,11 +119,32 @@ public ResponseEntity<?> newEnrollments(@RequestBody List<Enrollment> enrollment
         return enrollmentService.findById(enrollment_id);
     }
 
+    // @RequestMapping(value = "/Enrollment/Delete/{enrollment_id}", method = RequestMethod.GET)
+    // @ResponseBody
+    // public Boolean deleteEnrollment(@PathVariable Integer enrollment_id) {
+    //     return enrollmentService.deleteEnrollment(enrollment_id);
+    // }
+
     @RequestMapping(value = "/Enrollment/Delete/{enrollment_id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Boolean deleteEnrollment(@PathVariable Integer enrollment_id) {
-        return enrollmentService.deleteEnrollment(enrollment_id);
+@ResponseBody
+public ResponseEntity<Map<String, Object>> deleteEnrollment(@PathVariable Integer enrollment_id) {
+    boolean result = enrollmentService.deleteEnrollment(enrollment_id);
+
+    Map<String, Object> response = new HashMap<>();
+    if (result) {
+        response.put("success", true);
+        response.put("message", "Enrollment deleted successfully.");
+        return ResponseEntity.ok(response);
+    } else {
+        response.put("success", false);
+        response.put("message", "Cannot delete enrollment: Survey response exists.");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
+}
+
+
+
+    
     @RequestMapping(value = "/Enrollment/Page/{page}", method = RequestMethod.GET)
     @ResponseBody
     public Page<Enrollment> findAllPaged(@PathVariable Integer page){
