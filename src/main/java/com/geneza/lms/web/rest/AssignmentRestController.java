@@ -90,4 +90,10 @@ public class AssignmentRestController {
         return new java.util.ArrayList<Assignment>(assignmentService.findAllByModuleId(moduleId));
     }
 
+    @RequestMapping(value = "/Assignment/Person/{person_id}", method = RequestMethod.GET)
+@ResponseBody
+public List<Assignment> getAssignmentsByPerson(@PathVariable("person_id") Integer personId) {
+    return new java.util.ArrayList<>(assignmentService.findAssignmentsByPersonId(personId));
+}
+
 }

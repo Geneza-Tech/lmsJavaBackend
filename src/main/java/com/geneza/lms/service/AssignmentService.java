@@ -8,4 +8,5 @@ public interface AssignmentService {
     public boolean deleteAssignment(Integer assignmentId);
     public List<Assignment> findAll();
     public List<Assignment> findAllByModuleId(Integer  module);
+    public List<Assignment> findAssignmentsByPersonId(Integer personId);
 }

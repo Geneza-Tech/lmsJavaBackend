@@ -57,6 +57,8 @@ public class AssignmentServiceImpl implements AssignmentService {
         return new java.util.ArrayList<Assignment>(assignmentRepository.findAllByModuleId(moduleId));
     }
 
-    
+    public List<Assignment> findAssignmentsByPersonId(Integer personId) {
+        return assignmentRepository.findAssignmentsByPersonId(personId);
+    }
 
 }
