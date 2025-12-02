@@ -46,6 +46,12 @@ public class BatchSurvey implements Serializable {
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
     private String linkRole;
+
+    @Column(name = "assignToAllRoles")
+    @Basic(fetch = FetchType.EAGER)
+    @XmlElement
+    private Boolean assignToAllRoles = false;
+
     
     
     @ManyToOne
@@ -92,6 +98,14 @@ public class BatchSurvey implements Serializable {
     
     public void setLinkRole(String linkRole) {
         this.linkRole = linkRole;
+    }
+
+    public Boolean getAssignToAllRoles() {
+    return assignToAllRoles;
+    }
+
+    public void setAssignToAllRoles(Boolean assignToAllRoles) {
+        this.assignToAllRoles = assignToAllRoles;
     }
 
 

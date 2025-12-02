@@ -1,6 +1,8 @@
 package com.geneza.lms.service;
 import com.geneza.lms.domain.BatchSurvey;
 import java.util.List;
+import com.geneza.lms.dto.BatchSurveyAssignAllDTO;
+
 
 public interface BatchSurveyService {
     public BatchSurvey findById(Integer id);
@@ -8,4 +10,6 @@ public interface BatchSurveyService {
     public boolean deleteBatchSurvey(Integer batchSurveyId);
     public List<BatchSurvey> findAll();
     public List<BatchSurvey> findAllByBatchId(Integer  batch);
+    void assignSurveyToAllRoles(BatchSurveyAssignAllDTO dto);
+
 }

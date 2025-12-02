@@ -6,6 +6,7 @@ import com.geneza.lms.service.BatchSurveyService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.geneza.lms.dto.BatchSurveyAssignAllDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,5 +99,21 @@ public ResponseEntity<?> newBatchSurvey(@RequestBody BatchSurvey batchSurvey) {
     public List<BatchSurvey> getAllByBatchId(@PathVariable("batch_id") Integer batchId) {
         return new java.util.ArrayList<BatchSurvey>(batchSurveyService.findAllByBatchId(batchId));
     }
+
+   @RequestMapping(value = "/BatchSurvey/AssignAll", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> assignSurveyToAll(@RequestBody BatchSurveyAssignAllDTO dto) {
+
+        try {
+            batchSurveyService.assignSurveyToAllRoles(dto);
+            return ResponseEntity.ok("Survey assigned to all roles in batch successfully");
+        } catch (RuntimeException ex) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", ex.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+
 
 }

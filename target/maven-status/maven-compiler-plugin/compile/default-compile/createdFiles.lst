@@ -36,6 +36,7 @@ com/geneza/lms/service/impl/AttendanceServiceImpl.class
 com/geneza/lms/service/DailyUpdateModuleAttendanceService.class
 com/geneza/lms/service/impl/ModuleServiceImpl.class
 com/geneza/lms/service/AssignmentSubmissionService.class
+com/geneza/lms/dto/BatchSurveyAssignAllDTO.class
 com/geneza/lms/persistence/BatchSurveyRepository.class
 com/geneza/lms/service/BatchStatusService.class
 com/geneza/lms/domain/BatchTrainer.class
@@ -45,6 +46,7 @@ com/geneza/lms/service/impl/SubmissionStatusServiceImpl.class
 com/geneza/lms/security/MyCorsFilter.class
 com/geneza/lms/service/BatchModuleService.class
 com/geneza/lms/domain/GridDisplay.class
+com/geneza/lms/web/rest/AttachmentRestController.class
 com/geneza/lms/service/PersonService.class
 com/geneza/lms/dto/ParticipantDTO.class
 com/geneza/lms/service/CountryService.class
@@ -79,6 +81,7 @@ com/geneza/lms/service/EnrollmentService.class
 com/geneza/lms/service/impl/BatchModuleServiceImpl.class
 com/geneza/lms/web/rest/PersonRestController.class
 com/geneza/lms/service/ImageService.class
+com/geneza/lms/domain/Attachment.class
 com/geneza/lms/web/rest/BatchModuleRestController.class
 com/geneza/lms/service/impl/BatchTrainerServiceImpl.class
 com/geneza/lms/persistence/BatchRepository.class
@@ -121,6 +124,7 @@ com/geneza/lms/persistence/ModuleRepository.class
 com/geneza/lms/domain/Batch.class
 com/geneza/lms/Application.class
 com/geneza/lms/service/impl/SessionServiceImpl.class
+com/geneza/lms/service/AttachmentService.class
 com/geneza/lms/web/rest/BatchSurveyRestController.class
 com/geneza/lms/security/WebSecurityConfiguration.class
 com/geneza/lms/persistence/TrainerRepository.class
@@ -156,6 +160,7 @@ com/geneza/lms/domain/BatchMentor.class
 com/geneza/lms/persistence/CompetencyCriterionRepository.class
 com/geneza/lms/web/rest/CourseSurveyRestController.class
 com/geneza/lms/persistence/UserRepository.class
+com/geneza/lms/persistence/AttachmentRepository.class
 com/geneza/lms/service/ModuleService.class
 com/geneza/lms/persistence/ImageRepository.class
 com/geneza/lms/service/ParticipantService.class
@@ -166,3 +171,4 @@ com/geneza/lms/domain/Role.class
 com/geneza/lms/domain/User.class
 com/geneza/lms/web/rest/TrainerRestController.class
 com/geneza/lms/persistence/AttendanceRepository.class
+com/geneza/lms/service/impl/AttachmentServiceImpl.class
