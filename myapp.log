@@ -1,213 +1,250 @@
-2025-12-02 08:47:31.639  INFO 3624857 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3624857 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
-2025-12-02 08:47:31.664  INFO 3624857 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
-2025-12-02 08:47:37.302  INFO 3624857 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-12-02 08:47:37.303  INFO 3624857 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
-2025-12-02 08:47:37.327  INFO 3624857 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
-2025-12-02 08:47:37.498  INFO 3624857 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
-2025-12-02 08:47:37.994  INFO 3624857 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-12-02 08:47:38.410  INFO 3624857 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-12-02 08:47:45.377  INFO 3624857 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2025-12-02 08:47:47.607  INFO 3624857 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2025-12-02 08:47:47.643  INFO 3624857 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2025-12-02 08:47:47.821  INFO 3624857 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2025-12-02 08:47:48.194  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
-2025-12-02 08:47:48.205  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
-2025-12-02 08:47:48.313  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
-2025-12-02 08:47:48.319  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
-2025-12-02 08:47:48.333  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
-2025-12-02 08:47:48.340  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
-2025-12-02 08:47:48.394  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
-2025-12-02 08:47:48.400  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
-2025-12-02 08:47:48.438  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
-2025-12-02 08:47:48.442  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
-2025-12-02 08:47:48.445  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
-2025-12-02 08:47:48.489  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
-2025-12-02 08:47:48.493  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
-2025-12-02 08:47:48.525  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
-2025-12-02 08:47:48.561  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
-2025-12-02 08:47:48.563  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
-2025-12-02 08:47:48.593  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
-2025-12-02 08:47:48.598  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
-2025-12-02 08:47:48.631  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
-2025-12-02 08:47:48.635  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
-2025-12-02 08:47:48.683  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
-2025-12-02 08:47:48.710  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
-2025-12-02 08:47:48.735  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
-2025-12-02 08:47:48.737  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
-2025-12-02 08:47:48.752  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
-2025-12-02 08:47:48.755  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
-2025-12-02 08:47:48.774  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
-2025-12-02 08:47:48.776  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
-2025-12-02 08:47:48.811  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
-2025-12-02 08:47:48.824  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
-2025-12-02 08:47:48.854  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
-2025-12-02 08:47:48.860  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
-2025-12-02 08:47:48.866  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
-2025-12-02 08:47:48.893  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
-2025-12-02 08:47:48.898  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
-2025-12-02 08:47:48.919  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
-2025-12-02 08:47:48.922  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
-2025-12-02 08:47:48.926  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
-2025-12-02 08:47:48.929  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
-2025-12-02 08:47:48.950  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
-2025-12-02 08:47:48.952  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
-2025-12-02 08:47:48.961  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
-2025-12-02 08:47:48.963  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
-2025-12-02 08:47:48.981  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
-2025-12-02 08:47:48.988  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
-2025-12-02 08:47:48.992  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
-2025-12-02 08:47:49.011  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
-2025-12-02 08:47:49.013  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
-2025-12-02 08:47:49.051  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
-2025-12-02 08:47:49.098  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
-2025-12-02 08:47:49.110  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
-2025-12-02 08:47:49.136  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
-2025-12-02 08:47:49.140  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
-2025-12-02 08:47:49.154  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
-2025-12-02 08:47:49.157  INFO 3624857 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
-2025-12-02 08:47:49.247  INFO 3624857 --- [restartedMain] com.geneza.lms.Application               : Started Application in 18.656 seconds (JVM running for 19.613)
-2025-12-02 08:47:49.363  INFO 3624857 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2025-12-02 09:16:32.557  INFO 3624857 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-12-02 09:16:32.610  INFO 3624857 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-12-02 09:19:35.657  INFO 3625607 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3625607 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
-2025-12-02 09:19:35.667  INFO 3625607 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
-2025-12-02 09:19:41.050  INFO 3625607 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-12-02 09:19:41.051  INFO 3625607 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
-2025-12-02 09:19:41.070  INFO 3625607 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
-2025-12-02 09:19:41.201  INFO 3625607 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
-2025-12-02 09:19:41.648  INFO 3625607 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-12-02 09:19:42.055  INFO 3625607 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-12-02 09:19:48.713  INFO 3625607 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2025-12-02 09:19:50.893  INFO 3625607 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2025-12-02 09:19:50.930  INFO 3625607 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2025-12-02 09:19:51.106  INFO 3625607 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2025-12-02 09:19:51.507  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
-2025-12-02 09:19:51.513  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
-2025-12-02 09:19:51.598  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
-2025-12-02 09:19:51.603  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
-2025-12-02 09:19:51.616  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
-2025-12-02 09:19:51.620  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
-2025-12-02 09:19:51.658  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
-2025-12-02 09:19:51.665  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
-2025-12-02 09:19:51.724  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
-2025-12-02 09:19:51.732  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
-2025-12-02 09:19:51.736  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
-2025-12-02 09:19:51.779  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
-2025-12-02 09:19:51.788  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
-2025-12-02 09:19:51.814  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
-2025-12-02 09:19:51.840  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
-2025-12-02 09:19:51.843  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
-2025-12-02 09:19:51.863  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
-2025-12-02 09:19:51.867  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
-2025-12-02 09:19:51.891  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
-2025-12-02 09:19:51.894  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
-2025-12-02 09:19:51.917  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
-2025-12-02 09:19:51.940  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
-2025-12-02 09:19:51.965  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
-2025-12-02 09:19:51.967  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
-2025-12-02 09:19:51.990  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
-2025-12-02 09:19:51.993  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
-2025-12-02 09:19:52.010  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
-2025-12-02 09:19:52.017  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
-2025-12-02 09:19:52.047  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
-2025-12-02 09:19:52.058  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
-2025-12-02 09:19:52.081  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
-2025-12-02 09:19:52.084  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
-2025-12-02 09:19:52.088  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
-2025-12-02 09:19:52.114  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
-2025-12-02 09:19:52.119  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
-2025-12-02 09:19:52.143  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
-2025-12-02 09:19:52.147  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
-2025-12-02 09:19:52.151  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
-2025-12-02 09:19:52.155  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
-2025-12-02 09:19:52.173  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
-2025-12-02 09:19:52.175  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
-2025-12-02 09:19:52.184  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
-2025-12-02 09:19:52.187  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
-2025-12-02 09:19:52.201  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
-2025-12-02 09:19:52.205  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
-2025-12-02 09:19:52.213  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
-2025-12-02 09:19:52.239  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
-2025-12-02 09:19:52.242  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
-2025-12-02 09:19:52.276  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
-2025-12-02 09:19:52.319  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
-2025-12-02 09:19:52.331  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
-2025-12-02 09:19:52.351  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
-2025-12-02 09:19:52.356  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
-2025-12-02 09:19:52.371  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
-2025-12-02 09:19:52.373  INFO 3625607 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
-2025-12-02 09:19:52.456  INFO 3625607 --- [restartedMain] com.geneza.lms.Application               : Started Application in 17.75 seconds (JVM running for 18.349)
-2025-12-02 09:19:54.625  INFO 3625607 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2025-12-02 09:32:22.988  INFO 3625607 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-12-02 09:32:23.028  INFO 3625607 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-12-02 09:35:00.019  INFO 3626234 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3626234 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
-2025-12-02 09:35:00.030  INFO 3626234 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
-2025-12-02 09:35:05.569  INFO 3626234 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-12-02 09:35:05.570  INFO 3626234 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
-2025-12-02 09:35:05.595  INFO 3626234 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
-2025-12-02 09:35:05.765  INFO 3626234 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
-2025-12-02 09:35:06.206  INFO 3626234 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-12-02 09:35:06.785  INFO 3626234 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-12-02 09:35:13.745  INFO 3626234 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2025-12-02 09:35:16.088  INFO 3626234 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2025-12-02 09:35:16.126  INFO 3626234 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2025-12-02 09:35:16.302  INFO 3626234 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2025-12-02 09:35:16.704  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
-2025-12-02 09:35:16.714  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
-2025-12-02 09:35:16.828  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
-2025-12-02 09:35:16.834  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
-2025-12-02 09:35:16.848  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
-2025-12-02 09:35:16.855  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
-2025-12-02 09:35:16.908  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
-2025-12-02 09:35:16.918  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
-2025-12-02 09:35:16.976  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
-2025-12-02 09:35:16.980  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
-2025-12-02 09:35:16.984  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
-2025-12-02 09:35:17.005  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
-2025-12-02 09:35:17.008  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
-2025-12-02 09:35:17.027  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
-2025-12-02 09:35:17.051  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
-2025-12-02 09:35:17.054  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
-2025-12-02 09:35:17.074  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
-2025-12-02 09:35:17.077  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
-2025-12-02 09:35:17.098  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
-2025-12-02 09:35:17.103  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
-2025-12-02 09:35:17.148  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
-2025-12-02 09:35:17.169  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
-2025-12-02 09:35:17.188  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
-2025-12-02 09:35:17.192  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
-2025-12-02 09:35:17.221  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
-2025-12-02 09:35:17.228  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
-2025-12-02 09:35:17.256  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
-2025-12-02 09:35:17.263  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
-2025-12-02 09:35:17.298  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
-2025-12-02 09:35:17.323  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
-2025-12-02 09:35:17.365  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
-2025-12-02 09:35:17.370  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
-2025-12-02 09:35:17.375  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
-2025-12-02 09:35:17.397  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
-2025-12-02 09:35:17.401  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
-2025-12-02 09:35:17.425  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
-2025-12-02 09:35:17.429  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
-2025-12-02 09:35:17.433  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
-2025-12-02 09:35:17.436  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
-2025-12-02 09:35:17.457  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
-2025-12-02 09:35:17.460  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
-2025-12-02 09:35:17.472  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
-2025-12-02 09:35:17.479  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
-2025-12-02 09:35:17.504  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
-2025-12-02 09:35:17.508  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
-2025-12-02 09:35:17.512  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
-2025-12-02 09:35:17.532  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
-2025-12-02 09:35:17.535  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
-2025-12-02 09:35:17.577  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
-2025-12-02 09:35:17.619  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
-2025-12-02 09:35:17.627  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
-2025-12-02 09:35:17.649  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
-2025-12-02 09:35:17.655  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
-2025-12-02 09:35:17.667  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
-2025-12-02 09:35:17.670  INFO 3626234 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
-2025-12-02 09:35:17.756  INFO 3626234 --- [restartedMain] com.geneza.lms.Application               : Started Application in 18.955 seconds (JVM running for 19.89)
-2025-12-02 09:35:21.355  INFO 3626234 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2025-12-02 09:41:39.172  INFO 3626234 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-12-02 09:41:39.197  INFO 3626234 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-03 05:24:45.748  INFO 3640167 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3640167 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
+2025-12-03 05:24:45.770  INFO 3640167 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-12-03 05:24:51.144  INFO 3640167 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-03 05:24:51.144  INFO 3640167 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-12-03 05:24:51.159  INFO 3640167 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-12-03 05:24:51.323  INFO 3640167 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
+2025-12-03 05:24:51.753  INFO 3640167 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-03 05:24:52.220  INFO 3640167 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-03 05:24:59.368  INFO 3640167 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2025-12-03 05:25:01.657  INFO 3640167 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2025-12-03 05:25:01.698  INFO 3640167 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2025-12-03 05:25:01.880  INFO 3640167 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2025-12-03 05:25:02.267  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
+2025-12-03 05:25:02.273  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
+2025-12-03 05:25:02.440  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
+2025-12-03 05:25:02.445  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
+2025-12-03 05:25:02.461  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
+2025-12-03 05:25:02.472  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
+2025-12-03 05:25:02.517  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
+2025-12-03 05:25:02.524  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
+2025-12-03 05:25:02.581  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
+2025-12-03 05:25:02.587  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
+2025-12-03 05:25:02.591  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
+2025-12-03 05:25:02.619  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
+2025-12-03 05:25:02.623  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
+2025-12-03 05:25:02.637  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
+2025-12-03 05:25:02.657  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
+2025-12-03 05:25:02.660  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
+2025-12-03 05:25:02.679  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
+2025-12-03 05:25:02.682  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
+2025-12-03 05:25:02.710  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
+2025-12-03 05:25:02.713  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
+2025-12-03 05:25:02.757  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
+2025-12-03 05:25:02.786  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
+2025-12-03 05:25:02.809  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
+2025-12-03 05:25:02.811  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
+2025-12-03 05:25:02.827  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
+2025-12-03 05:25:02.831  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
+2025-12-03 05:25:02.852  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
+2025-12-03 05:25:02.856  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
+2025-12-03 05:25:02.878  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
+2025-12-03 05:25:02.889  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
+2025-12-03 05:25:02.913  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
+2025-12-03 05:25:02.918  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
+2025-12-03 05:25:02.921  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
+2025-12-03 05:25:02.957  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
+2025-12-03 05:25:02.961  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
+2025-12-03 05:25:02.982  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
+2025-12-03 05:25:02.986  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
+2025-12-03 05:25:02.992  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
+2025-12-03 05:25:02.996  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
+2025-12-03 05:25:03.019  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
+2025-12-03 05:25:03.022  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
+2025-12-03 05:25:03.032  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
+2025-12-03 05:25:03.035  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
+2025-12-03 05:25:03.050  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
+2025-12-03 05:25:03.054  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
+2025-12-03 05:25:03.058  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
+2025-12-03 05:25:03.073  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
+2025-12-03 05:25:03.075  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
+2025-12-03 05:25:03.121  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
+2025-12-03 05:25:03.158  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
+2025-12-03 05:25:03.167  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
+2025-12-03 05:25:03.187  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
+2025-12-03 05:25:03.190  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
+2025-12-03 05:25:03.203  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
+2025-12-03 05:25:03.205  INFO 3640167 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
+2025-12-03 05:25:03.286  INFO 3640167 --- [restartedMain] com.geneza.lms.Application               : Started Application in 18.396 seconds (JVM running for 18.979)
+2025-12-03 05:25:03.591  INFO 3640167 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2025-12-03 05:28:56.941  INFO 3640167 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-03 05:28:56.979  INFO 3640167 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-03 05:54:51.623  INFO 3641532 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3641532 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
+2025-12-03 05:54:51.632  INFO 3641532 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-12-03 05:54:57.113  INFO 3641532 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-03 05:54:57.117  INFO 3641532 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-12-03 05:54:57.143  INFO 3641532 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-12-03 05:54:57.297  INFO 3641532 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
+2025-12-03 05:54:57.774  INFO 3641532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-03 05:54:58.204  INFO 3641532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-03 05:55:05.117  INFO 3641532 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2025-12-03 05:55:07.330  INFO 3641532 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2025-12-03 05:55:07.367  INFO 3641532 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2025-12-03 05:55:07.543  INFO 3641532 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2025-12-03 05:55:07.880  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
+2025-12-03 05:55:07.888  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
+2025-12-03 05:55:07.974  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
+2025-12-03 05:55:07.980  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
+2025-12-03 05:55:07.993  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
+2025-12-03 05:55:08.000  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
+2025-12-03 05:55:08.046  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
+2025-12-03 05:55:08.050  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
+2025-12-03 05:55:08.097  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
+2025-12-03 05:55:08.102  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
+2025-12-03 05:55:08.107  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
+2025-12-03 05:55:08.137  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
+2025-12-03 05:55:08.140  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
+2025-12-03 05:55:08.156  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
+2025-12-03 05:55:08.187  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
+2025-12-03 05:55:08.190  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
+2025-12-03 05:55:08.225  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
+2025-12-03 05:55:08.229  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
+2025-12-03 05:55:08.248  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
+2025-12-03 05:55:08.252  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
+2025-12-03 05:55:08.274  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
+2025-12-03 05:55:08.291  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
+2025-12-03 05:55:08.307  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
+2025-12-03 05:55:08.310  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
+2025-12-03 05:55:08.324  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
+2025-12-03 05:55:08.327  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
+2025-12-03 05:55:08.345  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
+2025-12-03 05:55:08.351  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
+2025-12-03 05:55:08.386  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
+2025-12-03 05:55:08.401  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
+2025-12-03 05:55:08.437  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
+2025-12-03 05:55:08.445  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
+2025-12-03 05:55:08.452  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
+2025-12-03 05:55:08.480  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
+2025-12-03 05:55:08.485  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
+2025-12-03 05:55:08.511  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
+2025-12-03 05:55:08.514  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
+2025-12-03 05:55:08.521  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
+2025-12-03 05:55:08.524  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
+2025-12-03 05:55:08.546  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
+2025-12-03 05:55:08.549  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
+2025-12-03 05:55:08.559  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
+2025-12-03 05:55:08.563  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
+2025-12-03 05:55:08.585  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
+2025-12-03 05:55:08.588  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
+2025-12-03 05:55:08.591  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
+2025-12-03 05:55:08.609  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
+2025-12-03 05:55:08.612  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
+2025-12-03 05:55:08.654  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
+2025-12-03 05:55:08.692  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
+2025-12-03 05:55:08.706  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
+2025-12-03 05:55:08.722  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
+2025-12-03 05:55:08.725  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
+2025-12-03 05:55:08.737  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
+2025-12-03 05:55:08.739  INFO 3641532 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
+2025-12-03 05:55:08.796 ERROR 3641532 --- [restartedMain] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-8080]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:261) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:198) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) [spring-context-5.0.12.RELEASE.jar:5.0.12.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) [spring-boot-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+	at com.geneza.lms.Application.main(Application.java:28) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_472]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_472]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_472]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_472]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.8.RELEASE.jar:2.0.8.RELEASE]
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	... 18 common frames omitted
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_472]
+	at sun.nio.ch.Net.bind(Net.java:461) ~[na:1.8.0_472]
+	at sun.nio.ch.Net.bind(Net.java:453) ~[na:1.8.0_472]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222) ~[na:1.8.0_472]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85) ~[na:1.8.0_472]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1160) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018) ~[tomcat-embed-core-8.5.37.jar:8.5.37]
+	... 19 common frames omitted
+
+2025-12-03 05:55:08.802  INFO 3641532 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-03 05:55:08.962  INFO 3641532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-03 05:55:09.007  INFO 3641532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-03 06:04:00.979  INFO 3641872 --- [restartedMain] com.geneza.lms.Application               : Starting Application on ip-172-31-12-85 with PID 3641872 (/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/target/classes started by ubuntu in /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend)
+2025-12-03 06:04:00.990  INFO 3641872 --- [restartedMain] com.geneza.lms.Application               : No active profile set, falling back to default profiles: default
+2025-12-03 06:04:06.370  INFO 3641872 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-03 06:04:06.373  INFO 3641872 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.37
+2025-12-03 06:04:06.401  INFO 3641872 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2025-12-03 06:04:06.545  INFO 3641872 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring embedded WebApplicationContext
+2025-12-03 06:04:07.037  INFO 3641872 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-03 06:04:07.512  INFO 3641872 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-03 06:04:14.632  INFO 3641872 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2025-12-03 06:04:16.961  INFO 3641872 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2025-12-03 06:04:17.000  INFO 3641872 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2025-12-03 06:04:17.160  INFO 3641872 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2025-12-03 06:04:17.564  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_1
+2025-12-03 06:04:17.575  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_1
+2025-12-03 06:04:17.727  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_2
+2025-12-03 06:04:17.735  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_2
+2025-12-03 06:04:17.751  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_1
+2025-12-03 06:04:17.756  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_1
+2025-12-03 06:04:17.803  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_3
+2025-12-03 06:04:17.809  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_1
+2025-12-03 06:04:17.838  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_4
+2025-12-03 06:04:17.841  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_2
+2025-12-03 06:04:17.843  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_2
+2025-12-03 06:04:17.864  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_3
+2025-12-03 06:04:17.867  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_5
+2025-12-03 06:04:17.883  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByFiltersUsingGET_1
+2025-12-03 06:04:17.919  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_4
+2025-12-03 06:04:17.921  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_6
+2025-12-03 06:04:17.954  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_7
+2025-12-03 06:04:17.958  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_3
+2025-12-03 06:04:17.993  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_8
+2025-12-03 06:04:17.999  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_4
+2025-12-03 06:04:18.024  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_9
+2025-12-03 06:04:18.045  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_10
+2025-12-03 06:04:18.071  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_5
+2025-12-03 06:04:18.074  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_11
+2025-12-03 06:04:18.090  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_6
+2025-12-03 06:04:18.093  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_12
+2025-12-03 06:04:18.119  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_13
+2025-12-03 06:04:18.123  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_1
+2025-12-03 06:04:18.156  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_14
+2025-12-03 06:04:18.172  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByEnrollmentIdUsingGET_2
+2025-12-03 06:04:18.196  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_15
+2025-12-03 06:04:18.200  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByDailyUpdateIdUsingGET_1
+2025-12-03 06:04:18.204  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByModuleIdUsingGET_3
+2025-12-03 06:04:18.232  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_16
+2025-12-03 06:04:18.236  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_5
+2025-12-03 06:04:18.255  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_7
+2025-12-03 06:04:18.259  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_17
+2025-12-03 06:04:18.263  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_6
+2025-12-03 06:04:18.266  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByBatchIdUsingGET_7
+2025-12-03 06:04:18.286  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_1
+2025-12-03 06:04:18.289  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMenuListIdUsingGET_2
+2025-12-03 06:04:18.299  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_18
+2025-12-03 06:04:18.301  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByMentorIdUsingGET_1
+2025-12-03 06:04:18.322  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_8
+2025-12-03 06:04:18.326  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_19
+2025-12-03 06:04:18.330  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByCourseIdUsingGET_2
+2025-12-03 06:04:18.346  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_9
+2025-12-03 06:04:18.349  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_20
+2025-12-03 06:04:18.391  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteAttendanceUsingGET_1
+2025-12-03 06:04:18.438  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByBatchIdUsingGET_1
+2025-12-03 06:04:18.449  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPagedUsingGET_1
+2025-12-03 06:04:18.473  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedUsingGET_10
+2025-12-03 06:04:18.480  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_21
+2025-12-03 06:04:18.499  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllPagedSortedUsingGET_22
+2025-12-03 06:04:18.502  INFO 3641872 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAllByTrainerIdUsingGET_1
+2025-12-03 06:04:18.598  INFO 3641872 --- [restartedMain] com.geneza.lms.Application               : Started Application in 18.529 seconds (JVM running for 19.094)
+2025-12-03 06:04:21.472  INFO 3641872 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/lms]    : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2025-12-03 06:09:51.221  INFO 3641872 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-03 06:09:51.252  INFO 3641872 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

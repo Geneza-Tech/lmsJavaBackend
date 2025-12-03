@@ -101,18 +101,18 @@ public ResponseEntity<?> newBatchSurvey(@RequestBody BatchSurvey batchSurvey) {
     }
 
    @RequestMapping(value = "/BatchSurvey/AssignAll", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity<?> assignSurveyToAll(@RequestBody BatchSurveyAssignAllDTO dto) {
-
-        try {
-            batchSurveyService.assignSurveyToAllRoles(dto);
-            return ResponseEntity.ok("Survey assigned to all roles in batch successfully");
-        } catch (RuntimeException ex) {
-            Map<String, String> error = new HashMap<>();
-            error.put("error", ex.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-        }
+@ResponseBody
+public ResponseEntity<?> assignSurveyToAll(@RequestBody BatchSurveyAssignAllDTO dto) {
+    try {
+        batchSurveyService.assignSurveyToAll(dto);
+        return ResponseEntity.ok("Survey assigned to all users in batch");
+    } catch (RuntimeException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+}
+
 
 
 

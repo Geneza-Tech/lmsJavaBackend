@@ -10,6 +10,6 @@ public interface BatchSurveyService {
     public boolean deleteBatchSurvey(Integer batchSurveyId);
     public List<BatchSurvey> findAll();
     public List<BatchSurvey> findAllByBatchId(Integer  batch);
-    void assignSurveyToAllRoles(BatchSurveyAssignAllDTO dto);
+    void assignSurveyToAll(BatchSurveyAssignAllDTO dto);
 
 }

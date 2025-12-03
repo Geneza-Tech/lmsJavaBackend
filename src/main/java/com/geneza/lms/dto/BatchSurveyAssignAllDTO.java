@@ -4,7 +4,6 @@ public class BatchSurveyAssignAllDTO {
 
     private Integer batchId;
     private Integer surveyId;
-    private Boolean assignToAllRoles;
 
     public Integer getBatchId() {
         return batchId;
@@ -20,13 +19,5 @@ public class BatchSurveyAssignAllDTO {
 
     public void setSurveyId(Integer surveyId) {
         this.surveyId = surveyId;
-    }
-
-    public Boolean getAssignToAllRoles() {
-        return assignToAllRoles;
-    }
-
-    public void setAssignToAllRoles(Boolean assignToAllRoles) {
-        this.assignToAllRoles = assignToAllRoles;
     }
 }
