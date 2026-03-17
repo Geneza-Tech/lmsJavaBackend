@@ -96,4 +96,6 @@ public List<Assignment> getAssignmentsByPerson(@PathVariable("person_id") Intege
     return new java.util.ArrayList<>(assignmentService.findAssignmentsByPersonId(personId));
 }
 
+
+
 }

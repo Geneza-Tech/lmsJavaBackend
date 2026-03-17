@@ -114,6 +114,7 @@ com/geneza/lms/service/impl/BatchSurveyServiceImpl.class
 com/geneza/lms/web/rest/CompetencyCriterionRestController.class
 com/geneza/lms/domain/DailyUpdateModuleAttendance.class
 com/geneza/lms/service/impl/S3FileStorageServiceImpl.class
+com/geneza/lms/dto/TrainerDTO.class
 com/geneza/lms/service/CompetencyCriterionService.class
 com/geneza/lms/service/impl/DailyUpdateModuleAttendanceServiceImpl.class
 com/geneza/lms/service/FileStorageService.class

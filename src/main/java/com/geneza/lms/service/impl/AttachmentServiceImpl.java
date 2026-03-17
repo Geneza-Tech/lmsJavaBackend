@@ -50,4 +50,9 @@ public class AttachmentServiceImpl implements AttachmentService {
     public void delete(Integer id) {
         attachmentRepository.deleteById(id);
     }
+
+     @Override
+    public List<Attachment> getByLinkId(Integer linkId) {
+        return attachmentRepository.findByLinkId(linkId);
+    }
 }

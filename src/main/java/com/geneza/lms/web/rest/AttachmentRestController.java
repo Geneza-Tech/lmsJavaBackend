@@ -43,4 +43,13 @@ public class AttachmentRestController {
         attachmentService.delete(id);
         return ResponseEntity.ok("Deleted");
     }
+
+    @GetMapping("/bylinkId/{linkId}")
+    public ResponseEntity<List<Attachment>> getAttachmentsByLinkId(
+            @PathVariable Integer linkId
+    ) {
+        List<Attachment> attachments = attachmentService.getByLinkId(linkId);
+        return ResponseEntity.ok(attachments);
+    }
+
 }

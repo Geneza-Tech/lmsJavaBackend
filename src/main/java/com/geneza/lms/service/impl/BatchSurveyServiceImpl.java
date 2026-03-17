@@ -15,6 +15,14 @@ import com.geneza.lms.service.BatchSurveyService;
 import com.geneza.lms.service.ParticipantService;
 import com.geneza.lms.dto.BatchSurveyAssignAllDTO;
 import com.geneza.lms.domain.Batch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.geneza.lms.persistence.CourseSurveyRepository;
+import com.geneza.lms.persistence.BatchRepository;
+import com.geneza.lms.domain.CourseSurvey;
+import java.util.Arrays;
+import java.util.Optional;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,6 +59,15 @@ public class BatchSurveyServiceImpl implements BatchSurveyService {
 
     @Autowired
     private ParticipantService participantService;
+
+    @Autowired
+private CourseSurveyRepository courseSurveyRepository;
+
+    private static final Logger log = LoggerFactory.getLogger(BatchSurveyServiceImpl.class);
+
+ 
+
+    @Autowired private BatchRepository batchRepository;
 
 
 
@@ -253,7 +270,67 @@ public class BatchSurveyServiceImpl implements BatchSurveyService {
         return new java.util.ArrayList<BatchSurvey>(batchSurveyRepository.findAllByBatchId(batchId));
     }
 
-    @Override
+//     @Override
+// @Transactional
+// public void assignSurveyToAll(BatchSurveyAssignAllDTO dto) {
+
+//     Integer batchId = dto.getBatchId();
+//     Integer surveyId = dto.getSurveyId();
+
+//     if (batchId == null || surveyId == null) {
+//         throw new RuntimeException("batchId and surveyId are required");
+//     }
+
+//     // 1️⃣ CREATE BatchSurvey database entry
+//     BatchSurvey batchSurvey = new BatchSurvey();
+//     batchSurvey.setSurveyId(surveyId);
+//     batchSurvey.setReceipientRole("ALL");      // since you assign to all
+//     batchSurvey.setLinkRole(null);
+
+//     Batch batch = new Batch();
+//     batch.setId(batchId);
+//     batchSurvey.setBatch(batch);
+
+//     batchSurveyRepository.save(batchSurvey);
+
+//     // 2️⃣ Assign survey to all roles in the batch
+//     String[] allRoles = { "MTT", "QC", "LQC", "ICT", "MENTOR", "TRAINER" };
+
+//     List<Integer> personIds = new ArrayList<>();
+
+//     for (String role : allRoles) {
+//         personIds.addAll(getPersonIdsByRole(batchId, role));
+//     }
+
+//     if (personIds.isEmpty()) {
+//         throw new RuntimeException("No participants found for batch: " + batchId);
+//     }
+
+//     List<String> failed = new ArrayList<>();
+
+//     for (Integer personId : personIds) {
+//         boolean success = createResponseFromPerson(
+//                 personId.longValue(),
+//                 null,
+//                 surveyId,
+//                 batchId,
+//                 null,
+//                 null,
+//                 role
+//         );
+
+//         if (!success) {
+//             failed.add("Person: " + personId);
+//         }
+//     }
+
+//     if (!failed.isEmpty()) {
+//         throw new RuntimeException("Failed to assign survey to: " + String.join(", ", failed));
+//     }
+// }
+
+
+ @Override
 @Transactional
 public void assignSurveyToAll(BatchSurveyAssignAllDTO dto) {
 
@@ -267,7 +344,7 @@ public void assignSurveyToAll(BatchSurveyAssignAllDTO dto) {
     // 1️⃣ CREATE BatchSurvey database entry
     BatchSurvey batchSurvey = new BatchSurvey();
     batchSurvey.setSurveyId(surveyId);
-    batchSurvey.setReceipientRole("ALL");      // since you assign to all
+    batchSurvey.setReceipientRole("ALL");  // stays same — means assigned to all roles
     batchSurvey.setLinkRole(null);
 
     Batch batch = new Batch();
@@ -279,31 +356,28 @@ public void assignSurveyToAll(BatchSurveyAssignAllDTO dto) {
     // 2️⃣ Assign survey to all roles in the batch
     String[] allRoles = { "MTT", "QC", "LQC", "ICT", "MENTOR", "TRAINER" };
 
-    List<Integer> personIds = new ArrayList<>();
-
-    for (String role : allRoles) {
-        personIds.addAll(getPersonIdsByRole(batchId, role));
-    }
-
-    if (personIds.isEmpty()) {
-        throw new RuntimeException("No participants found for batch: " + batchId);
-    }
-
     List<String> failed = new ArrayList<>();
 
-    for (Integer personId : personIds) {
-        boolean success = createResponseFromPerson(
+    for (String role : allRoles) {
+
+        // get people for this specific role
+        List<Integer> personIds = getPersonIdsByRole(batchId, role);
+
+        for (Integer personId : personIds) {
+
+            boolean success = createResponseFromPerson(
                 personId.longValue(),
                 null,
                 surveyId,
                 batchId,
                 null,
                 null,
-                "ALL"
-        );
+                role              // 🔥 NEW: use actual participant role
+            );
 
-        if (!success) {
-            failed.add("Person: " + personId);
+            if (!success) {
+                failed.add("Person: " + personId + " (role=" + role + ")");
+            }
         }
     }
 
@@ -311,6 +385,7 @@ public void assignSurveyToAll(BatchSurveyAssignAllDTO dto) {
         throw new RuntimeException("Failed to assign survey to: " + String.join(", ", failed));
     }
 }
+
 
 
 

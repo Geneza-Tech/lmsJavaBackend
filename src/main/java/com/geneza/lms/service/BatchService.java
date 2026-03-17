@@ -14,7 +14,9 @@ public interface BatchService {
     public List<Batch> findAllByCountryId(Integer  country);
     public List<Batch> findAllByBatchStatusId(Integer  batchStatus);
     List<Batch> getBatchesByFilters(Integer courseId, Integer countryId, Integer batchStatusId);
-    Page<Batch> getBatchesByFilterPage(Integer courseId, Integer countryId, Integer batchStatusId, Pageable pageable);
+    Page<Batch> getBatchesByFilterPage(Integer courseId, Integer countryId, Integer batchStatusId,Integer personId, Pageable pageable);
+
+   
 
 
 }

@@ -1,11 +1,16 @@
 package com.geneza.lms.service.impl;
 import com.geneza.lms.persistence.BatchRepository;
 import com.geneza.lms.domain.Batch;
+import com.geneza.lms.domain.BatchTrainer;
+import com.geneza.lms.domain.Trainer;
 import com.geneza.lms.service.BatchService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,26 +99,44 @@ public List<Batch> getBatchesByFilters(Integer courseId, Integer countryId, Inte
 }
 
 @Override
-public Page<Batch> getBatchesByFilterPage(Integer courseId, Integer countryId, Integer batchStatusId, Pageable pageable) {
-    Specification<Batch> specification = (root, query, criteriaBuilder) -> {
+public Page<Batch> getBatchesByFilterPage(
+        Integer courseId,
+        Integer countryId,
+        Integer batchStatusId,
+        Integer personId,
+        Pageable pageable) {
+
+    Specification<Batch> specification = (root, query, cb) -> {
+
         List<Predicate> predicates = new ArrayList<>();
 
         if (courseId != null) {
-            predicates.add(criteriaBuilder.equal(root.get("course").get("id"), courseId));
-        }
-        if (countryId != null) {
-            predicates.add(criteriaBuilder.equal(root.get("country").get("id"), countryId));
-        }
-        if (batchStatusId != null) {
-            predicates.add(criteriaBuilder.equal(root.get("batchStatus").get("id"), batchStatusId));
+            predicates.add(cb.equal(root.get("course").get("id"), courseId));
         }
 
-        return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        if (countryId != null) {
+            predicates.add(cb.equal(root.get("country").get("id"), countryId));
+        }
+
+        if (batchStatusId != null) {
+            predicates.add(cb.equal(root.get("batchStatus").get("id"), batchStatusId));
+        }
+
+        if (personId != null) {
+
+            Join<Batch, BatchTrainer> batchTrainerJoin = root.join("batchTrainers", JoinType.LEFT);
+            Join<BatchTrainer, Trainer> trainerJoin = batchTrainerJoin.join("trainer", JoinType.LEFT);
+
+            predicates.add(cb.equal(trainerJoin.get("trainer").get("id"), personId));
+
+            query.distinct(true); // prevents duplicate batches
+        }
+
+        return cb.and(predicates.toArray(new Predicate[0]));
     };
 
     return batchRepository.findAll(specification, pageable);
 }
-
 
 
 

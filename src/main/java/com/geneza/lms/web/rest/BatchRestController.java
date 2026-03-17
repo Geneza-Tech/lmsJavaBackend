@@ -122,17 +122,25 @@ private EnrollmentService enrollmentService;
         return batchService.getBatchesByFilters(courseId, countryId, batchStatusId);
     }
 
-    @RequestMapping(value = "/Batch/Filter/page", method = RequestMethod.GET)
+   @RequestMapping(value = "/Batch/Filter/page", method = RequestMethod.GET)
 @ResponseBody
 public Page<Batch> getAllByFilters(
         @RequestParam(value = "courseId", required = false) Integer courseId,
         @RequestParam(value = "countryId", required = false) Integer countryId,
         @RequestParam(value = "batchStatusId", required = false) Integer batchStatusId,
+        @RequestParam(value = "personId", required = false) Integer personId,
         @RequestParam(value = "page", defaultValue = "0") int page,
         @RequestParam(value = "size", defaultValue = "10") int size) {
 
     Pageable pageable = PageRequest.of(page, size);
-    return batchService.getBatchesByFilterPage(courseId, countryId, batchStatusId, pageable);
+
+    return batchService.getBatchesByFilterPage(
+            courseId,
+            countryId,
+            batchStatusId,
+            personId,
+            pageable
+    );
 }
 
 @RequestMapping(value = "/Batch/personId/{studentId}", method = RequestMethod.GET)

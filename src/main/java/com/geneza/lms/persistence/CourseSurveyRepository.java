@@ -13,5 +13,7 @@ public interface CourseSurveyRepository extends JpaRepository<CourseSurvey, Long
     List<CourseSurvey> findAll();
     public List<CourseSurvey> findAllByCourseId(Integer courseId);  
    Page<CourseSurvey> findAll(Pageable pageable);
+   CourseSurvey findByCourseIdAndSurveyId(Integer courseId, Integer surveyId);
+
 
 }

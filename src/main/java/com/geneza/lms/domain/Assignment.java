@@ -44,6 +44,8 @@ public class Assignment implements Serializable {
     @JoinColumn(name="module")
     private Module module;
 
+    
+
 
     public void setId(Integer id) {
         this.id = id;

@@ -13,5 +13,7 @@ public interface AttachmentService {
 
     List<Attachment> list();
 
+    List<Attachment> getByLinkId(Integer linkId);
+
     void delete(Integer id);
 }

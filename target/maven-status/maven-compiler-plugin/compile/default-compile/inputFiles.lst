@@ -53,6 +53,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/CourseSurveyService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/EnrollmentService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/SubmissionStatusService.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/dto/TrainerDTO.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/DailyUpdateModuleAttendanceRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/SubmissionStatusRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/AttachmentRepository.java
