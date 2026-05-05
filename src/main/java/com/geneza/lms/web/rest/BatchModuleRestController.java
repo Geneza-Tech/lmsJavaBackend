@@ -1,5 +1,6 @@
 package com.geneza.lms.web.rest; 
 import com.geneza.lms.domain.BatchModule;
+import com.geneza.lms.dto.BatchModuleUpdateRequest;
 import com.geneza.lms.persistence.BatchModuleRepository;
 import com.geneza.lms.service.BatchModuleService;
 import java.util.List;
@@ -87,6 +88,12 @@ public class BatchModuleRestController {
     @ResponseBody
     public List<BatchModule> getAllByModuleId(@PathVariable("module_id") Integer moduleId) {
         return new java.util.ArrayList<BatchModule>(batchModuleService.findAllByModuleId(moduleId));
+    }
+
+    @RequestMapping(value = "/BatchModule/Module/bulkupdate", method = RequestMethod.POST)
+    @ResponseBody
+    public void updateBatchModules(@RequestBody BatchModuleUpdateRequest request) {
+        batchModuleService.updateBatchModules(request);
     }
 
 }

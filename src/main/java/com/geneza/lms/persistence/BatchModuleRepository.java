@@ -14,5 +14,7 @@ public interface BatchModuleRepository extends JpaRepository<BatchModule, Long> 
     public List<BatchModule> findAllByBatchId(Integer batchId);
     public List<BatchModule> findAllByModuleId(Integer moduleId);  
    Page<BatchModule> findAll(Pageable pageable);
+       BatchModule findByBatchIdAndModuleId(Integer batchId, Integer moduleId);
+
 
 }

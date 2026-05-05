@@ -1,10 +1,16 @@
 package com.geneza.lms.web.rest; 
+import com.geneza.lms.domain.Assignment;
 import com.geneza.lms.domain.AssignmentSubmission;
+import com.geneza.lms.domain.Enrollment;
+import com.geneza.lms.dto.AssignmentSubmissionDTO;
+import com.geneza.lms.dto.AssignmentSubmissionRequest;
 import com.geneza.lms.persistence.AssignmentSubmissionRepository;
 import com.geneza.lms.service.AssignmentSubmissionService;
+import com.geneza.lms.service.AttachmentService;
 import com.geneza.lms.service.FileStorageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +44,9 @@ public class AssignmentSubmissionRestController {
     private AssignmentSubmissionService assignmentSubmissionService;
 
     @Autowired
+private AttachmentService attachmentService; // ✅ CORRECT
+
+    @Autowired
     private FileStorageService fileStorageService; // Injecting the interface, not the impl
 
     @RequestMapping(value = "/AssignmentSubmission", method = RequestMethod.PUT)
@@ -52,33 +62,17 @@ public class AssignmentSubmissionRestController {
     // assignmentSubmissionService.saveAssignmentSubmission(assignmentSubmission);
     //     return assignmentSubmissionRepository.findById(assignmentSubmission.getId());
     // }
-    @RequestMapping(value = "/AssignmentSubmission/submitWithFile", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+   @PostMapping(value = "/AssignmentSubmission", consumes = "multipart/form-data")
 @ResponseBody
-public AssignmentSubmission createAssignmentSubmissionWithFile(
-        @RequestPart("assignmentSubmission") String assignmentSubmissionJson,
-        @RequestPart(value = "file", required = false) MultipartFile file) {
+public AssignmentSubmission createSubmission(
+        @RequestPart("data") String data,
+        @RequestPart(value = "files", required = false) MultipartFile[] files
+) throws Exception {
+    ObjectMapper mapper = new ObjectMapper();
+    AssignmentSubmissionRequest request = mapper.readValue(data, AssignmentSubmissionRequest.class);
+    List<MultipartFile> fileList = files != null ? Arrays.asList(files) : null;
 
-    try {
-        // ✅ Parse the JSON string to an object
-        ObjectMapper mapper = new ObjectMapper();
-        AssignmentSubmission assignmentSubmission = mapper.readValue(assignmentSubmissionJson, AssignmentSubmission.class);
-
-        // ✅ Upload file if present
-        if (file != null && !file.isEmpty()) {
-            String fileUrl = fileStorageService.uploadFile(file);
-            assignmentSubmission.setFileUrl(fileUrl);
-        }
-
-        // ✅ Save submission
-        assignmentSubmissionService.saveAssignmentSubmission(assignmentSubmission);
-
-        // ✅ Return it
-        return assignmentSubmissionRepository.findById(assignmentSubmission.getId());
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        throw new RuntimeException("Failed to submit assignment: " + e.getMessage());
-    }
+    return assignmentSubmissionService.createSubmission(request, fileList);
 }
 
    
@@ -185,5 +179,13 @@ public AssignmentSubmission createAssignmentSubmissionWithFile(
             @RequestParam(value = "studentId", required = false) Integer studentId) {
         return assignmentSubmissionService.getSubmissionsByModuleAndStudentId(batchId,moduleId,studentId);
     }
+
+    @GetMapping("/AssignmentSubmission/withAttachments/{assignmentId}")
+@ResponseBody
+public List<AssignmentSubmissionDTO> getSubmissionsWithAttachments(
+        @PathVariable Integer assignmentId) {
+
+    return assignmentSubmissionService.getSubmissionsWithAttachments(assignmentId);
+}
 
 }

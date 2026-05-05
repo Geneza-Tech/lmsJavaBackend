@@ -3,6 +3,7 @@ package com.geneza.lms.domain;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "attachment")
@@ -30,6 +31,18 @@ public class Attachment implements Serializable {
     @XmlElement
     private Integer linkId;   // <-- NEW FIELD
 
+    @Column(name = "link_type", nullable = false)
+    @XmlElement
+    private String linkType;       // discriminator: see AttachmentLinkType
+
+    @Column(name = "type")
+    @XmlElement
+    private String type;           // optional sub-type e.g. "key" | "content" for assignments
+
+    @Column(name = "created_at")
+    @XmlElement
+    private Date createdAt;
+
     public Attachment() {}
 
     public Integer getId() { return id; }
@@ -43,6 +56,15 @@ public class Attachment implements Serializable {
 
     public Integer getLinkId() { return linkId; }
     public void setLinkId(Integer linkId) { this.linkId = linkId; }
+
+    public String getLinkType() { return linkType; }
+    public void setLinkType(String linkType) { this.linkType = linkType; }
+
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+
+    public Date getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
 
     @Override
     public String toString() {

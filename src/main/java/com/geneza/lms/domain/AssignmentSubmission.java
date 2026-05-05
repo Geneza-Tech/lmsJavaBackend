@@ -16,7 +16,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "assignmentsubmission",uniqueConstraints = @UniqueConstraint(columnNames = {"assignment", "enrollment"}))
+@Table(name = "assignmentsubmission")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace = "GenezaRest/com/geneza/lms/domain", name = "assignmentsubmission")
 public class AssignmentSubmission implements Serializable {
@@ -30,15 +30,14 @@ public class AssignmentSubmission implements Serializable {
     @XmlElement
     private Integer id;
     
-    @Column(name = "content")
-    @Basic(fetch = FetchType.EAGER)
-    @XmlElement
+    @Column(name = "content", columnDefinition = "TEXT")
     private String submissionContent;
 
     @Column(name = "comment")
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
     private String comment;
+    
 
     @ManyToOne
     @JoinColumn(name="assignment")
@@ -48,10 +47,19 @@ public class AssignmentSubmission implements Serializable {
     @JoinColumn(name="submissionStatus")
     private SubmissionStatus submissionStatus;
 
-    @Column(name = "file_url")
-    @Basic(fetch = FetchType.EAGER)
-    @XmlElement
-    private String fileUrl;
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "submittedAt")
+    private Date submittedAt;
+
+    @Column(name = "score")
+    private BigDecimal score;
+
+    // @Column(name = "file_url")
+    // @Basic(fetch = FetchType.EAGER)
+    // @XmlElement
+    // private String fileUrl;
 
 
     public void setId(Integer id) {
@@ -107,13 +115,39 @@ public class AssignmentSubmission implements Serializable {
     public AssignmentSubmission() {
     }
 
-    public String getFileUrl() {
-        return fileUrl;
-    }
+    // public String getFileUrl() {
+    //     return fileUrl;
+    // }
     
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
+    // public void setFileUrl(String fileUrl) {
+    //     this.fileUrl = fileUrl;
+    // }
+
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }   
+
+    public Date getSubmittedAt() {
+        return submittedAt;
+    }
+
+    public void setSubmittedAt(Date submittedAt) {
+        this.submittedAt = submittedAt;
+    }
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
+
     
 
 

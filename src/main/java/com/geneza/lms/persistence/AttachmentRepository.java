@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AttachmentRepository extends JpaRepository<Attachment, Integer> {
         List<Attachment> findByLinkId(Integer linkId);
-
+        List<Attachment> findByLinkTypeAndLinkId(String linkType, Integer linkId);
+    List<Attachment> findByLinkType(String linkType);
 }

@@ -1,7 +1,11 @@
 package com.geneza.lms.web.rest; 
 import com.geneza.lms.domain.Assignment;
+import com.geneza.lms.domain.Module;
+import com.geneza.lms.dto.AssignmentResponseDTO;
 import com.geneza.lms.persistence.AssignmentRepository;
 import com.geneza.lms.service.AssignmentService;
+import com.geneza.lms.service.AttachmentService;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,6 +34,53 @@ public class AssignmentRestController {
 
     @Autowired
     private AssignmentService assignmentService;
+
+    @Autowired
+private AttachmentService attachmentService;
+
+    
+@RequestMapping(
+    value = "/Assignment/createWithFiles",
+    method = RequestMethod.POST,
+    consumes = {"multipart/form-data"}
+)
+@ResponseBody
+public Integer createAssignment(
+        @RequestParam String assignment,
+        @RequestParam Integer moduleId,
+        @RequestParam(required = false) Integer durationDays,
+        @RequestParam(required = false) List<MultipartFile> contentFiles,
+        @RequestParam(required = false) List<MultipartFile> keyFiles
+) throws Exception {
+
+    Assignment a = new Assignment();
+
+    a.setAssignment(assignment);
+    a.setDurationDays(durationDays);
+
+    Module module = new Module();
+    module.setId(moduleId);
+    a.setModule(module);
+
+    // ✅ SAVE FIRST
+    Assignment saved = assignmentService.saveAndReturn(a);
+
+    // ✅ Upload content files
+    if (contentFiles != null) {
+        for (MultipartFile file : contentFiles) {
+            attachmentService.upload(file, saved.getId(), "ASSIGNMENT", "assingmentContent");
+        }
+    }
+
+    // ✅ Upload key files
+    if (keyFiles != null) {
+        for (MultipartFile file : keyFiles) {
+            attachmentService.upload(file, saved.getId(), "ASSIGNMENT", "assignmentKey");
+        }
+    }
+
+    return saved.getId();
+}
 
     @RequestMapping(value = "/Assignment", method = RequestMethod.PUT)
     @ResponseBody
@@ -97,5 +150,29 @@ public List<Assignment> getAssignmentsByPerson(@PathVariable("person_id") Intege
 }
 
 
+ @RequestMapping(value = "/Assignment/student", method = RequestMethod.GET)
+@ResponseBody
+public List<AssignmentResponseDTO> getAssignments(
+            @RequestParam Integer moduleId,
+            @RequestParam String role) {
 
+        return assignmentService.getAssignmentsByModuleAndRole(moduleId, role);
+    }
+
+    @RequestMapping(value = "/Assignment/admin", method = RequestMethod.GET)
+@ResponseBody
+public List<AssignmentResponseDTO> getAssignmentsWithAllAttachments(
+            @RequestParam Integer moduleId) {
+
+        return assignmentService.getAssignmentsWithAllAttachments(moduleId);
+    }
+
+    @RequestMapping(value = "/Assignment/Batch", method = RequestMethod.GET)
+@ResponseBody
+public List<AssignmentResponseDTO> getAssignmentsByBatch(
+        @RequestParam Integer batchId,
+        @RequestParam String role) {
+
+    return assignmentService.getAssignmentsByBatch(batchId, role);
+}
 }

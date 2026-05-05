@@ -15,12 +15,16 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     List<Assignment> findAll();
     public List<Assignment> findAllByModuleId(Integer moduleId);  
    Page<Assignment> findAll(Pageable pageable);
-       @Query("SELECT a FROM Assignment a " +
-           "JOIN a.module m " +
-           "JOIN BatchModule bm ON bm.module = m " +
-           "JOIN Enrollment e ON e.batch = bm.batch " +
-           "WHERE e.student.id = :personId")
-    List<Assignment> findAssignmentsByPersonId(@Param("personId") Integer personId);
+       @Query("SELECT DISTINCT a FROM Assignment a " +
+       "JOIN a.module m " +
+       "JOIN BatchModule bm ON bm.module = m " +
+       "JOIN Enrollment e ON e.batch = bm.batch " +
+       "WHERE e.student.id = :personId")
+List<Assignment> findAssignmentsByPersonId(@Param("personId") Integer personId);
+
+    @Query("SELECT a FROM Assignment a WHERE a.module.id IN " +
+       "(SELECT bm.module.id FROM BatchModule bm WHERE bm.batch.id = :batchId)")
+List<Assignment> findAssignmentsByBatchId(@Param("batchId") Integer batchId);
 
 
 }

@@ -1,6 +1,7 @@
 package com.geneza.lms.web.rest;
 
 import com.geneza.lms.domain.SessionAttendance;
+import com.geneza.lms.dto.AttendanceRequest;
 import com.geneza.lms.persistence.SessionAttendanceRepository;
 import com.geneza.lms.service.SessionAttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.PageRequest;
 import java.util.List;
 
@@ -84,6 +86,16 @@ public List<SessionAttendance> getByBatchId(@PathVariable Integer batchId) {
 public SessionAttendance updateAttendance(@RequestBody SessionAttendance attendance) {
     attendanceService.save(attendance); // Save updated data
     return attendanceRepository.findById(attendance.getId()).orElse(null); // Return the updated object
+}
+
+@PostMapping("/sessions/{sessionId}/attendance/bulk")
+public ResponseEntity<List<SessionAttendance>> markAttendance(
+        @PathVariable Integer sessionId,
+        @RequestBody List<AttendanceRequest> requests) {
+
+    return ResponseEntity.ok(
+        attendanceService.bulkMarkAttendance(sessionId, requests)
+    );
 }
 
 

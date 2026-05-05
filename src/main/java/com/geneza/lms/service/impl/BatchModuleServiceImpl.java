@@ -1,8 +1,17 @@
 package com.geneza.lms.service.impl;
 import com.geneza.lms.persistence.BatchModuleRepository;
+import com.geneza.lms.domain.Batch;
 import com.geneza.lms.domain.BatchModule;
+import com.geneza.lms.domain.Module;
+import com.geneza.lms.dto.BatchModuleUpdateRequest;
 import com.geneza.lms.service.BatchModuleService;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +67,47 @@ public class BatchModuleServiceImpl implements BatchModuleService {
         return new java.util.ArrayList<BatchModule>(batchModuleRepository.findAllByModuleId(moduleId));
     }
 
-    
+    @Override
+@Transactional
+public void updateBatchModules(BatchModuleUpdateRequest request) {
 
+    Integer batchId = request.getBatchId();
+    List<Integer> moduleIds = request.getModuleIds();
+
+    List<BatchModule> existing =
+            batchModuleRepository.findAllByBatchId(batchId);
+
+    Set<Integer> existingModuleIds = existing.stream()
+            .map(bm -> bm.getModule().getId())
+            .collect(Collectors.toSet());
+
+    Set<Integer> newModuleIds = new HashSet<>(moduleIds);
+
+    // =========================
+    // ➕ ADD ONLY (SAFE)
+    // =========================
+    List<BatchModule> toAdd = new ArrayList<>();
+
+    for (Integer moduleId : newModuleIds) {
+
+        if (!existingModuleIds.contains(moduleId)) {
+
+            BatchModule bm = new BatchModule();
+
+            Batch batch = new Batch();
+            batch.setId(batchId);
+
+            Module module = new Module();
+            module.setId(moduleId);
+
+            bm.setBatch(batch);
+            bm.setModule(module);
+
+            toAdd.add(bm);
+        }
+    }
+
+    batchModuleRepository.saveAll(toAdd);
+    batchModuleRepository.flush();
+}
 }

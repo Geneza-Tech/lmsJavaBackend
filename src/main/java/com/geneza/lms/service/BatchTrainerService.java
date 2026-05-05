@@ -1,5 +1,7 @@
 package com.geneza.lms.service;
 import com.geneza.lms.domain.BatchTrainer;
+import com.geneza.lms.dto.BatchTrainerUpdateRequest;
+
 import java.util.List;
 
 public interface BatchTrainerService {
@@ -10,5 +12,6 @@ public interface BatchTrainerService {
     public List<BatchTrainer> findAllByBatchId(Integer  batch);
     public List<BatchTrainer> findAllByTrainerId(Integer  trainer);
     public List<BatchTrainer> findByPersonId(Integer personId);
+    void updateBatchTrainers(BatchTrainerUpdateRequest request);
 
 }

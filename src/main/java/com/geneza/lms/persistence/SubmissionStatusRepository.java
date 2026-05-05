@@ -12,5 +12,5 @@ public interface SubmissionStatusRepository extends JpaRepository<SubmissionStat
     SubmissionStatus findById(Integer id);
     List<SubmissionStatus> findAll();  
    Page<SubmissionStatus> findAll(Pageable pageable);
-
+    SubmissionStatus findBySubmissionStatus(String submissionStatus);
 }

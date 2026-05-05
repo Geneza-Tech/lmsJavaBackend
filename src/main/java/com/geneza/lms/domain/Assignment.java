@@ -4,9 +4,10 @@ import java.lang.StringBuilder;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.persistence.Id;
 import java.util.Date;
 import java.math.*;
+import java.time.LocalDateTime;
+
 import javax.xml.bind.annotation.*;
 import javax.persistence.*;
 
@@ -33,18 +34,23 @@ public class Assignment implements Serializable {
     @Column(name = "assignment")
     @Basic(fetch = FetchType.EAGER)
     @XmlElement
-    private String assignment;@Column(name = "content")
-    @Basic(fetch = FetchType.EAGER)
-    @XmlElement
-    private String assignmentContent;@Column(name = "assignmentKey")
-    @Basic(fetch = FetchType.EAGER)
-    @XmlElement
+    private String assignment;
+    
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String assignmentContent;
+
+    @Column(name = "assignmentKey", columnDefinition = "TEXT")
     private String assignmentKey;
+    
     @ManyToOne
     @JoinColumn(name="module")
     private Module module;
 
-    
+    @Column(name = "durationDays")
+    private Integer durationDays;
+
+    @Column(name = "archivedAt")
+    private LocalDateTime archivedAt;
 
 
     public void setId(Integer id) {
@@ -86,6 +92,22 @@ public class Assignment implements Serializable {
     
     public void setAssignmentKey(String assignmentKey) {
         this.assignmentKey = assignmentKey;
+    }
+
+    public Integer getDurationDays() {
+        return durationDays;
+    }
+
+    public void setDurationDays(Integer durationDays) {
+        this.durationDays = durationDays;
+    }
+
+    public LocalDateTime getArchivedAt() {
+    return archivedAt;
+    }
+
+    public void setArchivedAt(LocalDateTime archivedAt) {
+        this.archivedAt = archivedAt;
     }
 
 

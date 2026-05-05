@@ -1,5 +1,7 @@
 package com.geneza.lms.service;
 import com.geneza.lms.domain.BatchModule;
+import com.geneza.lms.dto.BatchModuleUpdateRequest;
+
 import java.util.List;
 
 public interface BatchModuleService {
@@ -9,4 +11,5 @@ public interface BatchModuleService {
     public List<BatchModule> findAll();
     public List<BatchModule> findAllByBatchId(Integer  batch);
     public List<BatchModule> findAllByModuleId(Integer  module);
+    void updateBatchModules(BatchModuleUpdateRequest request);
 }

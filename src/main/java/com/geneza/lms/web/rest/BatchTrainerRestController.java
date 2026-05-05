@@ -1,5 +1,6 @@
 package com.geneza.lms.web.rest; 
 import com.geneza.lms.domain.BatchTrainer;
+import com.geneza.lms.dto.BatchTrainerUpdateRequest;
 import com.geneza.lms.persistence.BatchTrainerRepository;
 import com.geneza.lms.service.BatchTrainerService;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.PageRequest;
@@ -96,5 +98,11 @@ public class BatchTrainerRestController {
     public List<BatchTrainer> getBatchTrainersByPersonId(@PathVariable Integer personId) {
         return batchTrainerService.findByPersonId(personId);
     }
+
+    @PostMapping("/BatchTrainer/bulkUpdate")
+@ResponseBody
+public void updateBatchTrainers(@RequestBody BatchTrainerUpdateRequest request) {
+    batchTrainerService.updateBatchTrainers(request);
+}
 
 }
