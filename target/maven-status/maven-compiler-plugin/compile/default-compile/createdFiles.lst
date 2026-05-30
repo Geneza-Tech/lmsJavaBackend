@@ -7,7 +7,6 @@ com/geneza/lms/service/impl/BatchServiceImpl.class
 com/geneza/lms/service/BatchSurveyService.class
 com/geneza/lms/service/MentorService.class
 com/geneza/lms/service/impl/GridDisplayServiceImpl.class
-com/geneza/lms/security/CustomUserDetailsService$1.class
 com/geneza/lms/domain/Person.class
 com/geneza/lms/persistence/SessionAttendanceRepository.class
 com/geneza/lms/web/rest/EnrollmentRestController.class
@@ -55,7 +54,6 @@ com/geneza/lms/domain/BatchModuleTrainer.class
 com/geneza/lms/web/rest/SubmissionStatusRestController.class
 com/geneza/lms/persistence/BatchModuleRepository.class
 com/geneza/lms/web/rest/CourseRestController.class
-com/geneza/lms/security/ServerConfiguration$AuthorizationServerConfiguration.class
 com/geneza/lms/dto/BatchDTO.class
 com/geneza/lms/service/impl/BatchModuleEnrollmentAssignmentServiceImpl.class
 com/geneza/lms/service/impl/CompetencyCriterionServiceImpl.class
@@ -93,6 +91,7 @@ com/geneza/lms/persistence/AssignmentSubmissionRepository.class
 com/geneza/lms/persistence/PersonRepository.class
 com/geneza/lms/web/rest/BatchStatusRestController.class
 com/geneza/lms/persistence/DailyUpdateModuleRepository.class
+com/geneza/lms/security/KeycloakRoleConverter.class
 com/geneza/lms/domain/SubmissionStatus.class
 com/geneza/lms/domain/Image.class
 com/geneza/lms/domain/Enrollment.class
@@ -107,6 +106,7 @@ com/geneza/lms/service/TrainerService.class
 com/geneza/lms/domain/Mentor.class
 com/geneza/lms/web/rest/TrainerRestController.class
 com/geneza/lms/persistence/AttendanceRepository.class
+com/geneza/lms/security/SecurityConfig.class
 com/geneza/lms/dto/AttachmentDTO.class
 com/geneza/lms/service/impl/CourseServiceImpl.class
 com/geneza/lms/web/rest/BatchRestController.class
@@ -125,7 +125,6 @@ com/geneza/lms/dto/BatchModuleTrainerUpdateRequest.class
 com/geneza/lms/domain/Module.class
 com/geneza/lms/web/rest/UserRestController.class
 com/geneza/lms/persistence/AssignmentRepository.class
-com/geneza/lms/security/ServerConfiguration.class
 com/geneza/lms/service/impl/AttendanceServiceImpl.class
 com/geneza/lms/service/DailyUpdateModuleAttendanceService.class
 com/geneza/lms/dto/BatchModuleUpdateRequest.class
@@ -140,7 +139,6 @@ com/geneza/lms/security/MyCorsFilter.class
 com/geneza/lms/service/BatchModuleService.class
 com/geneza/lms/persistence/BatchModuleProgressRepository.class
 com/geneza/lms/service/Public.class
-com/geneza/lms/security/CustomUserDetailsService$UserRepositoryUserDetails.class
 com/geneza/lms/service/impl/AssignmentSubmissionServiceImpl.class
 com/geneza/lms/service/SubmissionStatusService.class
 com/geneza/lms/web/rest/SessionRestController.class
@@ -184,7 +182,6 @@ com/geneza/lms/service/AttachmentService.class
 com/geneza/lms/web/rest/BatchSurveyRestController.class
 com/geneza/lms/security/WebSecurityConfiguration.class
 com/geneza/lms/domain/SessionAttendance.class
-com/geneza/lms/security/CustomUserDetailsService.class
 com/geneza/lms/service/impl/UserServiceImpl.class
 com/geneza/lms/service/BatchService.class
 com/geneza/lms/web/rest/DailyUpdateModuleRestController.class
@@ -195,7 +192,6 @@ com/geneza/lms/web/rest/AttendanceRestController.class
 com/geneza/lms/domain/Session.class
 com/geneza/lms/service/exception/ServiceException.class
 com/geneza/lms/persistence/EnrollmentRepository.class
-com/geneza/lms/security/ServerConfiguration$ResourceServerConfiguration.class
 com/geneza/lms/web/rest/SessionAttendanceRestController.class
 com/geneza/lms/utilities/NotificationService.class
 com/geneza/lms/service/impl/EnrollmentServiceImpl.class

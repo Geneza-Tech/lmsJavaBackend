@@ -54,12 +54,7 @@
 
 
 
-			<!-- Jakarta Persistence API (for CriteriaBuilder) -->
-    <dependency>
-        <groupId>jakarta.persistence</groupId>
-        <artifactId>jakarta.persistence-api</artifactId>
-        <version>3.1.0</version>  <!-- Use latest version -->
-    </dependency>
+			
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-devtools</artifactId>
@@ -77,10 +72,42 @@
 			  </dependency>
 			  
 			  <dependency>
-			    <groupId>org.springframework.security.oauth.boot</groupId>
-			    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-			    <version>2.1.8.RELEASE</version>
-			  </dependency>
+    <groupId>org.springframework.security.oauth.boot</groupId>
+    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+    <version>2.0.8.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-oauth2-resource-server</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-oauth2-jose</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-jwt</artifactId>
+    <version>1.0.10.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.security.oauth</groupId>
+    <artifactId>spring-security-oauth2</artifactId>
+    <version>2.3.6.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.security.oauth.boot</groupId>
+    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+    <version>2.0.8.RELEASE</version>
+</dependency>
+
+			  
 			  
 			  
 			 <dependency>
@@ -142,6 +169,18 @@
 		    </dependency>
 
 	</dependencies>
+
+	<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.keycloak.bom</groupId>
+            <artifactId>keycloak-adapter-bom</artifactId>
+            <version>21.1.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 
 	<build>
 		<plugins>

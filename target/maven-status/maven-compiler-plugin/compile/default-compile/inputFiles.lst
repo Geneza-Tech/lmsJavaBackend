@@ -20,6 +20,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/CompetencyCriterionRepository.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/web/rest/CompetencyCategoryRestController.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/impl/S3FileStorageServiceImpl.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/security/KeycloakRoleConverter.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/domain/Batch.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/domain/Person.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/BatchStatusRepository.java
@@ -190,6 +191,7 @@
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/impl/DailyUpdateServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/ModuleService.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/web/rest/GridDisplayRestController.java
+/home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/security/SecurityConfig.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/service/impl/BatchModuleServiceImpl.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/domain/GridDisplay.java
 /home/ubuntu/lms/lms/lmspost/lmspostlatest/lms/lms/lmsJavaBackend/src/main/java/com/geneza/lms/persistence/AssignmentSubmissionRepository.java
