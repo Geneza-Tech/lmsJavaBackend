@@ -50,13 +50,17 @@ public Integer createAssignment(
         @RequestParam Integer moduleId,
         @RequestParam(required = false) Integer durationDays,
         @RequestParam(required = false) List<MultipartFile> contentFiles,
-        @RequestParam(required = false) List<MultipartFile> keyFiles
+        @RequestParam(required = false) List<MultipartFile> keyFiles,
+        @RequestParam(required = false, defaultValue = "false") Boolean contentRequired,
+        @RequestParam(required = false, defaultValue = "false") Boolean attachmentRequired
 ) throws Exception {
 
     Assignment a = new Assignment();
 
     a.setAssignment(assignment);
     a.setDurationDays(durationDays);
+    a.setContentRequired(contentRequired);
+    a.setAttachmentRequired(attachmentRequired);
 
     Module module = new Module();
     module.setId(moduleId);

@@ -43,6 +43,7 @@ public class BatchModuleServiceImpl implements BatchModuleService {
         existingBatchModule.setId(batchModule.getId());
                 existingBatchModule.setBatch(batchModule.getBatch());
                 existingBatchModule.setModule(batchModule.getModule());
+                existingBatchModule.setStatus(batchModule.getStatus());
         }
         batchModule = batchModuleRepository.save(existingBatchModule);
     }else{

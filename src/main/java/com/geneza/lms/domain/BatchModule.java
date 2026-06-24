@@ -33,7 +33,10 @@ public class BatchModule implements Serializable {
     @XmlElement
     private Integer id;  
     
-    
+    @Column(name = "status")
+    @Basic(fetch = FetchType.EAGER)
+    @XmlElement
+    private String status;
     
     @ManyToOne
     @JoinColumn(name="batchId")
@@ -78,6 +81,14 @@ public class BatchModule implements Serializable {
         StringBuilder buffer = new StringBuilder();
         buffer.append("id=[").append(id).append("] ");
         return buffer.toString();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 

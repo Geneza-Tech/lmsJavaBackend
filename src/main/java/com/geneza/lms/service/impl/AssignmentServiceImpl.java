@@ -54,6 +54,8 @@ public class AssignmentServiceImpl implements AssignmentService {
             existingAssignment.setAssignmentKey(assignment.getAssignmentKey());
             existingAssignment.setArchivedAt(assignment.getArchivedAt()); // ✅ NEW
             existingAssignment.setDurationDays(assignment.getDurationDays());
+            existingAssignment.setContentRequired(assignment.getContentRequired());
+            existingAssignment.setAttachmentRequired(assignment.getAttachmentRequired());
     }
         assignment = assignmentRepository.save(existingAssignment);
     }else{
@@ -94,7 +96,8 @@ public class AssignmentServiceImpl implements AssignmentService {
             dto.setAssignment(assignment.getAssignment());
             dto.setAssignmentContent(assignment.getAssignmentContent());
             dto.setDurationDays(assignment.getDurationDays());
-
+            dto.setContentRequired(assignment.getContentRequired());
+            dto.setAttachmentRequired(assignment.getAttachmentRequired());
             List<Attachment> attachments =
                 attachmentRepository.findByLinkTypeAndLinkId("ASSIGNMENT", assignment.getId());
 
@@ -131,6 +134,8 @@ public class AssignmentServiceImpl implements AssignmentService {
             dto.setAssignmentContent(assignment.getAssignmentContent());
             dto.setAssignmentKey(assignment.getAssignmentKey());
             dto.setDurationDays(assignment.getDurationDays());
+            dto.setContentRequired(assignment.getContentRequired());
+            dto.setAttachmentRequired(assignment.getAttachmentRequired());
 
             List<AttachmentDTO> attachments =
                 attachmentRepository.findByLinkTypeAndLinkId("ASSIGNMENT", assignment.getId())
@@ -163,6 +168,8 @@ public List<AssignmentResponseDTO> getAssignmentsByBatch(Integer batchId, String
         dto.setAssignment(assignment.getAssignment());
         dto.setAssignmentContent(assignment.getAssignmentContent());
         dto.setDurationDays(assignment.getDurationDays());
+        dto.setContentRequired(assignment.getContentRequired());
+        dto.setAttachmentRequired(assignment.getAttachmentRequired());
 
         // ✅ Only include key for admin
         if (!"student".equalsIgnoreCase(role)) {

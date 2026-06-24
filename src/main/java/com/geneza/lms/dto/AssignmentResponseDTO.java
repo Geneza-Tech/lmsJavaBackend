@@ -9,6 +9,8 @@ public class AssignmentResponseDTO {
     private String assignmentContent;
     private String assignmentKey;
     private Integer durationDays;
+    private Boolean contentRequired;
+    private Boolean attachmentRequired;
     private List<AttachmentDTO> attachments;
 
     // getters & setters
@@ -48,5 +50,16 @@ public class AssignmentResponseDTO {
     public void setAttachments(List<AttachmentDTO> attachments) {
         this.attachments = attachments;
     }
-    
+    public Boolean getContentRequired() {
+        return contentRequired;
+    }
+    public void setContentRequired(Boolean contentRequired) {
+        this.contentRequired = contentRequired;
+    }
+    public Boolean getAttachmentRequired() {
+        return attachmentRequired;
+    }
+    public void setAttachmentRequired(Boolean attachmentRequired) {
+        this.attachmentRequired = attachmentRequired;
+    }
 }

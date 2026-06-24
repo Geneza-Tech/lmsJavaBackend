@@ -52,6 +52,12 @@ public class Assignment implements Serializable {
     @Column(name = "archivedAt")
     private LocalDateTime archivedAt;
 
+    @Column(name = "contentRequired")
+    private Boolean contentRequired;
+
+    @Column(name = "attachmentRequired")
+    private Boolean attachmentRequired;
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -110,6 +116,21 @@ public class Assignment implements Serializable {
         this.archivedAt = archivedAt;
     }
 
+    public Boolean getContentRequired() {
+        return contentRequired;
+    }
+
+    public void setContentRequired(Boolean contentRequired) {
+        this.contentRequired = contentRequired;
+    }
+
+    public Boolean getAttachmentRequired() {
+        return attachmentRequired;
+    }
+
+    public void setAttachmentRequired(Boolean attachmentRequired) {
+        this.attachmentRequired = attachmentRequired;
+    }
 
     public Assignment() {
     }
