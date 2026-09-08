@@ -11,13 +11,19 @@ import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.domain.SubmissionStatus;
 import com.geneza.lms.dto.AssignmentSubmissionDTO;
 import com.geneza.lms.dto.AssignmentSubmissionRequest;
+import com.geneza.lms.dto.AssignmentSubmissionStatusDTO;
 import com.geneza.lms.dto.AttachmentDTO;
 import com.geneza.lms.service.AssignmentSubmissionService;
 import com.geneza.lms.service.AttachmentService;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -139,8 +145,136 @@ public AssignmentSubmission saveAssignmentSubmission(AssignmentSubmission submis
     }
     
     @Override
-    public List<AssignmentSubmission> getSubmissionsByModuleAndStudentId(Integer batchId,Integer moduleId, Integer studentId) {
-        return assignmentSubmissionRepository.findByBatchAndOptionalModuleAndStudent(batchId ,moduleId, studentId);
+    public List<AssignmentSubmissionStatusDTO> getSubmissionsByModuleAndStudentId(Integer batchId, Integer moduleId, Integer studentId) {
+        List<AssignmentSubmission> submissions =
+            assignmentSubmissionRepository.findByBatchAndOptionalModuleAndStudent(batchId, moduleId, studentId);
+
+        Map<Integer, AssignmentSubmission> submissionByEnrollmentId = new LinkedHashMap<>();
+        for (AssignmentSubmission submission : submissions) {
+            if (submission.getEnrollment() == null) {
+                continue;
+            }
+            Integer enrollmentId = submission.getEnrollment().getId();
+            AssignmentSubmission existing = submissionByEnrollmentId.get(enrollmentId);
+            if (existing == null || isNewerSubmission(submission, existing)) {
+                submissionByEnrollmentId.put(enrollmentId, submission);
+            }
+        }
+
+        Assignment defaultAssignment = resolveDefaultAssignment(moduleId);
+
+        List<Enrollment> enrollments;
+        if (batchId != null) {
+            enrollments = enrollmentRepository.findByBatchIdWithStudent(batchId);
+            if (studentId != null) {
+                enrollments = enrollments.stream()
+                    .filter(enrollment -> enrollment.getStudent() != null
+                        && studentId.equals(enrollment.getStudent().getId()))
+                    .collect(Collectors.toList());
+            }
+        } else {
+            enrollments = submissions.stream()
+                .map(AssignmentSubmission::getEnrollment)
+                .filter(Objects::nonNull)
+                .collect(Collectors.collectingAndThen(
+                    Collectors.toMap(Enrollment::getId, enrollment -> enrollment, (left, right) -> left, LinkedHashMap::new),
+                    map -> new ArrayList<>(map.values())));
+        }
+
+        List<AssignmentSubmissionStatusDTO> result = new ArrayList<>();
+        for (Enrollment enrollment : enrollments) {
+            AssignmentSubmission submission = submissionByEnrollmentId.get(enrollment.getId());
+            result.add(toStatusDto(enrollment, submission, defaultAssignment, moduleId));
+        }
+
+        result.sort(Comparator
+            .comparing(AssignmentSubmissionStatusDTO::getFirstName, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))
+            .thenComparing(AssignmentSubmissionStatusDTO::getLastName, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER)));
+
+        return result;
+    }
+
+    private Assignment resolveDefaultAssignment(Integer moduleId) {
+        if (moduleId == null) {
+            return null;
+        }
+        List<Assignment> assignments = assignmentRepository.findAllByModuleId(moduleId);
+        if (assignments != null && assignments.size() == 1) {
+            return assignments.get(0);
+        }
+        return null;
+    }
+
+    private boolean isNewerSubmission(AssignmentSubmission candidate, AssignmentSubmission existing) {
+        Date candidateDate = candidate.getSubmittedAt() != null ? candidate.getSubmittedAt() : candidate.getCreatedAt();
+        Date existingDate = existing.getSubmittedAt() != null ? existing.getSubmittedAt() : existing.getCreatedAt();
+        if (candidateDate != null && existingDate != null) {
+            return candidateDate.after(existingDate);
+        }
+        if (candidateDate != null) {
+            return true;
+        }
+        if (candidate.getId() != null && existing.getId() != null) {
+            return candidate.getId() > existing.getId();
+        }
+        return false;
+    }
+
+    private AssignmentSubmissionStatusDTO toStatusDto(
+            Enrollment enrollment,
+            AssignmentSubmission submission,
+            Assignment defaultAssignment,
+            Integer moduleId) {
+
+        AssignmentSubmissionStatusDTO dto = new AssignmentSubmissionStatusDTO();
+        dto.setEnrollmentId(enrollment.getId());
+        dto.setRole(enrollment.getRole());
+
+        if (enrollment.getStudent() != null) {
+            dto.setStudentId(enrollment.getStudent().getId());
+            dto.setFirstName(enrollment.getStudent().getFirstName());
+            dto.setLastName(enrollment.getStudent().getLastName());
+            dto.setEmail(enrollment.getStudent().getEmail());
+            dto.setRollNumber(enrollment.getStudent().getRollNumber());
+        }
+
+        if (submission != null) {
+            dto.setUploaded(true);
+            dto.setSubmissionId(submission.getId());
+            dto.setSubmissionContent(submission.getSubmissionContent());
+            dto.setComment(submission.getComment());
+            dto.setSubmittedAt(submission.getSubmittedAt());
+            if (submission.getSubmissionStatus() != null) {
+                dto.setSubmissionStatus(submission.getSubmissionStatus().getSubmissionStatus());
+            }
+            if (submission.getAssignment() != null) {
+                dto.setAssignmentId(submission.getAssignment().getId());
+                dto.setAssignment(submission.getAssignment().getAssignment());
+                if (submission.getAssignment().getModule() != null) {
+                    dto.setModuleId(submission.getAssignment().getModule().getId());
+                }
+            }
+            List<Attachment> attachments =
+                attachmentRepository.findByLinkTypeAndLinkId("assignment_submission", submission.getId());
+            dto.setAttachments(attachments.stream().map(AttachmentDTO::new).collect(Collectors.toList()));
+        } else {
+            dto.setUploaded(false);
+            dto.setSubmissionStatus("Not Uploaded");
+            dto.setAttachments(Collections.emptyList());
+            if (defaultAssignment != null) {
+                dto.setAssignmentId(defaultAssignment.getId());
+                dto.setAssignment(defaultAssignment.getAssignment());
+                if (defaultAssignment.getModule() != null) {
+                    dto.setModuleId(defaultAssignment.getModule().getId());
+                } else {
+                    dto.setModuleId(moduleId);
+                }
+            } else {
+                dto.setModuleId(moduleId);
+            }
+        }
+
+        return dto;
     }
 
     public List<Attachment> getSubmissionAttachments(Integer submissionId) {

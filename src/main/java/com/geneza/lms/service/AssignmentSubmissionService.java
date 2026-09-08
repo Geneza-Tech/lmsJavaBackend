@@ -4,6 +4,7 @@ import com.geneza.lms.domain.AssignmentSubmission;
 import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.dto.AssignmentSubmissionDTO;
 import com.geneza.lms.dto.AssignmentSubmissionRequest;
+import com.geneza.lms.dto.AssignmentSubmissionStatusDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public interface AssignmentSubmissionService {
     public List<AssignmentSubmission> findAllByEnrollmentId(Integer  enrollment);
     public List<AssignmentSubmission> findAllBySubmissionStatusId(Integer  submissionStatus);
     List<AssignmentSubmission> getSubmissionsByPersonId(Integer personId);
-    List<AssignmentSubmission> getSubmissionsByModuleAndStudentId(Integer batchId,Integer moduleId, Integer studentId);
+    List<AssignmentSubmissionStatusDTO> getSubmissionsByModuleAndStudentId(Integer batchId,Integer moduleId, Integer studentId);
     List<AssignmentSubmissionDTO> getSubmissionsWithAttachments(Integer assignmentId);
 
     AssignmentSubmission createSubmission(

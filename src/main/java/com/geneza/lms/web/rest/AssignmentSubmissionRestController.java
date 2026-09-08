@@ -4,6 +4,7 @@ import com.geneza.lms.domain.AssignmentSubmission;
 import com.geneza.lms.domain.Enrollment;
 import com.geneza.lms.dto.AssignmentSubmissionDTO;
 import com.geneza.lms.dto.AssignmentSubmissionRequest;
+import com.geneza.lms.dto.AssignmentSubmissionStatusDTO;
 import com.geneza.lms.persistence.AssignmentSubmissionRepository;
 import com.geneza.lms.service.AssignmentSubmissionService;
 import com.geneza.lms.service.AttachmentService;
@@ -171,13 +172,13 @@ public AssignmentSubmission createSubmission(
         return assignmentSubmissionService.getSubmissionsByPersonId(personId);
     }
 
-    @RequestMapping(value = "/AssignmentSubmission/bymodule", method = RequestMethod.GET)
+    @RequestMapping(value = {"/AssignmentSubmission/bymodule", "/AssignmentSubmission/bymoduleid"}, method = RequestMethod.GET)
     @ResponseBody
-    public List<AssignmentSubmission> getSubmissions(
+    public List<AssignmentSubmissionStatusDTO> getSubmissions(
             @RequestParam(value = "batchId", required = false) Integer batchId,
             @RequestParam(value = "moduleId", required = false) Integer moduleId,
             @RequestParam(value = "studentId", required = false) Integer studentId) {
-        return assignmentSubmissionService.getSubmissionsByModuleAndStudentId(batchId,moduleId,studentId);
+        return assignmentSubmissionService.getSubmissionsByModuleAndStudentId(batchId, moduleId, studentId);
     }
 
     @GetMapping("/AssignmentSubmission/withAttachments/{assignmentId}")

@@ -24,4 +24,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     List<Enrollment> findByBatchId(Integer batchId);
     List<Enrollment> findByBatchIdAndRole(Integer batchId, String role);
 
+    @Query("SELECT DISTINCT e FROM Enrollment e JOIN FETCH e.student WHERE e.batch.id = :batchId")
+    List<Enrollment> findByBatchIdWithStudent(@Param("batchId") Integer batchId);
+
 }

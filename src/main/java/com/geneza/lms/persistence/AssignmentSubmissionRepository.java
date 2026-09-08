@@ -26,11 +26,13 @@ public interface AssignmentSubmissionRepository extends JpaRepository<Assignment
    @Query("SELECT a FROM AssignmentSubmission a WHERE a.enrollment.student.id = :personId")
 List<AssignmentSubmission> findByPersonId(@Param("personId") Integer personId);
 
-@Query("SELECT s FROM AssignmentSubmission s " +
-       "JOIN s.assignment a " +
-       "JOIN a.module m " +
-       "JOIN s.enrollment e " +
+@Query("SELECT DISTINCT s FROM AssignmentSubmission s " +
+       "JOIN FETCH s.assignment a " +
+       "JOIN FETCH a.module m " +
+       "JOIN FETCH s.enrollment e " +
+       "JOIN FETCH e.student " +
        "JOIN e.batch b " +
+       "LEFT JOIN FETCH s.submissionStatus " +
        "WHERE (:batchId IS NULL OR b.id = :batchId) " +
        "AND (:moduleId IS NULL OR m.id = :moduleId) " +
        "AND (:studentId IS NULL OR e.student.id = :studentId) ")
